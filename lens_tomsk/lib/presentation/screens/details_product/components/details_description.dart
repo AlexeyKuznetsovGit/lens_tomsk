@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lens_tomsk/domain/models/Product.dart';
 import 'package:lens_tomsk/presentation/common/constants.dart';
-import 'package:expandable_text/expandable_text.dart';
+import 'package:readmore/readmore.dart';
 
 class DetailsDescription extends StatelessWidget {
   const DetailsDescription({Key? key, required this.product}) : super(key: key);
@@ -27,17 +27,29 @@ class DetailsDescription extends StatelessWidget {
         Container(
           padding: EdgeInsets.fromLTRB(10, 20, 10, 20),
           width: 318.w,
-          child: ExpandableText(
+          child: ReadMoreText(
             product.description,
-            expandText: 'Смотреть далее...',
-            collapseText: 'Свернуть',
-            maxLines: 5,
-            linkColor: Colors.blue,
+            trimExpandedText: "Свернуть",
+            trimCollapsedText: "Смотреть далее...",
+            trimLines: 5,
+            trimMode: TrimMode.Line,
             style: TextStyle(
               color: kBlackColor,
               fontFamily: 'Poppins-Regular',
               fontSize: 12.sp,
               fontWeight: FontWeight.w400,
+            ),
+            moreStyle: TextStyle(
+              color: kBlueColor,
+              fontFamily: 'OpenSans-SemiBold',
+              fontSize: 12.sp,
+              fontWeight: FontWeight.w600,
+            ),
+            lessStyle: TextStyle(
+              color: kBlueColor,
+              fontFamily: 'OpenSans-SemiBold',
+              fontSize: 12.sp,
+              fontWeight: FontWeight.w600,
             ),
           ),
         )

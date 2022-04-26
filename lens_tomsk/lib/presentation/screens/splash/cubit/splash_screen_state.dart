@@ -5,7 +5,7 @@ abstract class SplashScreenState {}
 class SplashScreenLoadingState extends SplashScreenState {}
 
 class SplashScreenLoadedState extends SplashScreenState {
-  List<Product> products;
+  final List<Product> products;
 
   SplashScreenLoadedState({required this.products});
 }

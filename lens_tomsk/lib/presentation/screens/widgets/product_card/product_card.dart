@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lens_tomsk/presentation/common/constants.dart';
 import 'package:lens_tomsk/domain/models/Product.dart';
 import 'package:lens_tomsk/presentation/screens/widgets/buttons/button_circle.dart';
+import 'package:lens_tomsk/presentation/screens/widgets/buttons/button_favourite/button_favourite_provider.dart';
 import 'package:lens_tomsk/presentation/screens/widgets/product_card/components/product_image.dart';
 import 'package:lens_tomsk/presentation/screens/widgets/product_card/components/product_title.dart';
 import 'package:lens_tomsk/presentation/screens/widgets/product_card/components/product_price.dart';
@@ -46,12 +47,11 @@ class ProductCard extends StatelessWidget {
                             right: 10.w),
                         child: Column(
                           children: [
-                            //ButtonSetFavourite(),
-                            ButtonCircle(pathToIcon: "assets/icons/star-white.svg", press: () {}),
+                           // ButtonCircle(pathToIcon: "assets/icons/star-white.svg", press: () {}),
+                           ButtonFavouriteProvider(product: product,),
                             SizedBox(
                               height: 5.h,
                             ),
-                            //ButtonAddToCart(),
                             ButtonCircle(pathToIcon: "assets/icons/cart-white.svg", press: () {}),
                           ],
                         ),

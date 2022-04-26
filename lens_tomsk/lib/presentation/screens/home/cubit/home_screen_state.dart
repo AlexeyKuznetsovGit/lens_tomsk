@@ -1,17 +1,9 @@
-import 'package:lens_tomsk/domain/models/Product.dart';
+import 'package:flutter/material.dart';
+import 'package:lens_tomsk/presentation/common/constants.dart';
 
 abstract class HomeScreenState {}
 
-class HomeScreenLoadingState extends HomeScreenState {}
-
-class HomeScreenLoadedState extends HomeScreenState {
-  List<Product> products;
-
-  HomeScreenLoadedState({required this.products});
+class initHomeState extends HomeScreenState {
+  Color favourite = kWhiteBlueColor;
 }
 
-class HomeScreenErrorState extends HomeScreenState {
-  final String errorMsg;
-
-  HomeScreenErrorState({required this.errorMsg});
-}

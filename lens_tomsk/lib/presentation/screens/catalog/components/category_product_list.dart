@@ -14,17 +14,11 @@ class CategoryProductList extends StatelessWidget {
         children: List.generate(
           categories.length,
           (int index) => CategoryProductCard(
+            category_name: categories[index].nameCategory,
             category_product: categories[index],
           ),
         ),
       ),
     );
-
-    /* Column(
-      children: [
-        for (int i = 0; i < categories.length; i++)
-        CategoryProductCard(category_product: categories[i],)
-      ],
-    ); */
   }
 }

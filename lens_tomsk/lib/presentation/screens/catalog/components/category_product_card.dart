@@ -1,27 +1,38 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:lens_tomsk/data/repository/Category_products.dart';
 import 'package:lens_tomsk/domain/models/Category_product.dart';
+import 'package:lens_tomsk/domain/models/Product.dart';
 import 'package:lens_tomsk/presentation/common/constants.dart';
 import 'package:lens_tomsk/presentation/screens/details_catalog/details_catalog_screen.dart';
 import 'package:lens_tomsk/presentation/screens/widgets/section_title.dart';
 
 class CategoryProductCard extends StatelessWidget {
   CategoryProductCard(
-      {Key? key, required this.category_product})
+      {Key? key, required this.category_name, required this.category_product})
       : super(key: key);
-
   final CategoryProduct category_product;
+  final String category_name;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(left: 11.w, right: 11.w, bottom: 10.h),
       child: GestureDetector(
-        onTap: (){
+        onTap: () {
           Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => DetailsCatalogScreen()));
+              context,
+              MaterialPageRoute(
+                builder: (context) => DetailsCatalogScreen(
+                  category_name: category_name,
+                ),
+              ));
+              categoryProducts = [];
+              for(int index = 0; index < products.length; index++){
+                if(products[index].category == category_name){
+                  categoryProducts.add(products[index]);
+                }
+              }
         },
         child: Container(
           height: 164.h,

@@ -5,7 +5,7 @@ import 'package:lens_tomsk/presentation/common/constants.dart';
 import 'package:lens_tomsk/presentation/common/enums.dart';
 import 'package:lens_tomsk/presentation/screens/cart/cart_screen.dart';
 import 'package:lens_tomsk/presentation/screens/catalog/catalog_screen.dart';
-import 'package:lens_tomsk/presentation/screens/favourite/favourite_screen.dart';
+import 'package:lens_tomsk/presentation/screens/favourite/favourite_screen_provider.dart';
 import 'package:lens_tomsk/presentation/screens/home/home_screen.dart';
 import 'package:lens_tomsk/presentation/screens/profile/profile_screen.dart';
 
@@ -84,7 +84,7 @@ class BottomNavBar extends StatelessWidget {
                       : kBlackColor,
                 ),
                 onPressed: () =>
-                    Navigator.pushNamed(context, FavouriteScreen.routeName),
+                    Navigator.pushNamed(context, FavouriteScreenProvider.routeName),
               ),
               IconButton(
                 icon: SvgPicture.asset(

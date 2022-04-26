@@ -31,7 +31,7 @@ class Header extends StatelessWidget {
         decoration: InputDecoration(
           enabledBorder: InputBorder.none,
           focusedBorder: InputBorder.none,
-          hintText: 'Поиск по названию или категории...',
+          hintText: 'Поиск по названию...',
           hintStyle: TextStyle(
               fontFamily: 'Poppins-Regular',
               fontSize: 12.sp,
@@ -48,3 +48,9 @@ class Header extends StatelessWidget {
     ));
   }
 }
+ /* prefixIcon: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
+            child: SvgPicture.asset(
+              "assets/icons/search.svg",
+            ),
+          ), */
