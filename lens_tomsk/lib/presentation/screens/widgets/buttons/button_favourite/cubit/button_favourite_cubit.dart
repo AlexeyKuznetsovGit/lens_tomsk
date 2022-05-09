@@ -22,4 +22,5 @@ class ButtonFavouriteCubit extends Cubit<ButtonFavouriteState> {
     print(favouriteProducts.length);
     emit(NotFavouriteState(notFavouriteColor: kBlueColor));
   }
+
 }

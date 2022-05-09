@@ -79,6 +79,9 @@ class BodyFavourite extends StatelessWidget {
               ),
             );
           }
+          if(state is UpdateFavouriteState){
+            return Center(child: Text("хуй"));
+          }
           if (state is NotEmptyFavouriteState){
             return Padding(
                 padding: EdgeInsets.only(top: 20.h),
