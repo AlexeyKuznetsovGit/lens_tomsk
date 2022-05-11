@@ -79,35 +79,35 @@ class BodyFavourite extends StatelessWidget {
               ),
             );
           }
-          if(state is UpdateFavouriteState){
-            return Center(child: Text("хуй"));
+          if (state is UpdateFavouriteState) {
+            return Center(child: Text("ААААА"));
           }
-          if (state is NotEmptyFavouriteState){
+          if (state is NotEmptyFavouriteState) {
             return Padding(
-                padding: EdgeInsets.only(top: 20.h),
+              padding: EdgeInsets.only(top: 20.h),
               child: GridView.builder(
-                padding: EdgeInsets.only(right: 10.w, bottom: 20.h),
-                shrinkWrap: true,
-                physics: ScrollPhysics(),
-                    itemCount: favouriteProducts.length,
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                         mainAxisSpacing: 10.h,
-                         mainAxisExtent: 217.h,
-                        crossAxisCount: 2,
-                      ),
-                      itemBuilder: (context, index) {
-                        return GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => DetailsProductScreen(
-                                        product: favouriteProducts[index])));
-                          },
-                          child: ProductCard(product: favouriteProducts[index]),
-                        );
-                      }),
-              );
+                  padding: EdgeInsets.only(right: 10.w, bottom: 20.h),
+                  shrinkWrap: true,
+                  physics: ScrollPhysics(),
+                  itemCount: favouriteProducts.length,
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    mainAxisSpacing: 10.h,
+                    mainAxisExtent: 217.h,
+                    crossAxisCount: 2,
+                  ),
+                  itemBuilder: (context, index) {
+                    return GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => DetailsProductScreen(
+                                    product: favouriteProducts[index])));
+                      },
+                      child: ProductCard(product: favouriteProducts[index]),
+                    );
+                  }),
+            );
           }
           return Container();
         }),

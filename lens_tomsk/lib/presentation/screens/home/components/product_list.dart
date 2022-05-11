@@ -18,8 +18,7 @@ class ProductLists extends StatelessWidget {
           text: "Товары со скидкой",
         ),
         Container(
-          margin:
-              EdgeInsets.only(right: 10.w, top: 10.h, bottom: 20.h),
+          margin: EdgeInsets.only(right: 10.w, top: 10.h, bottom: 20.h),
           height: 217.h,
           child: ListView.builder(
               scrollDirection: Axis.horizontal,
@@ -34,8 +33,7 @@ class ProductLists extends StatelessWidget {
                               builder: (context) => DetailsProductScreen(
                                   product: products[index])));
                     },
-                    child:
-                        ProductCard(product: products[index]),
+                    child: ProductCard(product: products[index]),
                   );
                 }
                 return Container();
@@ -43,8 +41,7 @@ class ProductLists extends StatelessWidget {
         ),
         SectionTitle(text: "Рекомендуемые"),
         Container(
-          margin:
-              EdgeInsets.only(right: 10.w, top: 10.h, bottom: 20.h),
+          margin: EdgeInsets.only(right: 10.w, top: 10.h, bottom: 20.h),
           height: 217.h,
           child: ListView.builder(
               scrollDirection: Axis.horizontal,
@@ -59,13 +56,12 @@ class ProductLists extends StatelessWidget {
                               builder: (context) => DetailsProductScreen(
                                   product: products[index])));
                     },
-                    child:
-                        ProductCard(product: products[index]),
+                    child: ProductCard(product: products[index]),
                   );
                 }
                 return Container();
               }),
-        ), 
+        ),
       ],
     );
   }

@@ -4,10 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:lens_tomsk/presentation/common/constants.dart';
 
 class Header extends StatelessWidget {
-  const Header({
-    Key? key,
-    required this.width
-  }) : super(key: key);
+  const Header({Key? key, required this.width}) : super(key: key);
 
   final int width;
 
@@ -29,6 +26,8 @@ class Header extends StatelessWidget {
       ),
       child: TextFormField(
         decoration: InputDecoration(
+          contentPadding:
+              EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
           enabledBorder: InputBorder.none,
           focusedBorder: InputBorder.none,
           hintText: 'Поиск по названию...',

@@ -21,51 +21,52 @@ class ProductCard extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.only(left: 10),
       child: Container(
-          height: 217.h,
-          width: 164.w,
-          decoration: BoxDecoration(
-            color: kWhiteColor,
-            borderRadius: BorderRadius.circular(10),
-            boxShadow: [
-              BoxShadow(
-                color: kBlueColor.withOpacity(0.1),
-                blurRadius: 5,
-              ),
-            ],
-          ),
-          child: Column(
-            children: [
-              Stack(
-                alignment: AlignmentDirectional.topEnd,
-                children: [
-                  ProductImage(product: product),
-                  Column(
-                    children: [
-                      Container(
-                        padding: EdgeInsets.only(
-                            top: 10.h,
-                            right: 10.w),
-                        child: Column(
-                          children: [
-                           // ButtonCircle(pathToIcon: "assets/icons/star-white.svg", press: () {}),
-                           ButtonFavouriteProvider(product: product,),
-                            SizedBox(
-                              height: 5.h,
-                            ),
-                            ButtonCircle(pathToIcon: "assets/icons/cart-white.svg", press: () {}),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-              ProductTitle(product: product),
-              ProductPrice(product: product),
-            ],
-          ),
+        height: 217.h,
+        width: 164.w,
+        decoration: BoxDecoration(
+          color: kWhiteColor,
+          borderRadius: BorderRadius.circular(10),
+          boxShadow: [
+            BoxShadow(
+              color: kBlueColor.withOpacity(0.1),
+              blurRadius: 5,
+            ),
+          ],
         ),
-      
+        child: Column(
+          children: [
+            Stack(
+              alignment: AlignmentDirectional.topEnd,
+              children: [
+                ProductImage(product: product),
+                Column(
+                  children: [
+                    Container(
+                      padding: EdgeInsets.only(top: 10.h, right: 10.w),
+                      child: Column(
+                        children: [
+                          // ButtonCircle(pathToIcon: "assets/icons/star-white.svg", press: () {}),
+                          ButtonFavouriteProvider(
+                            product: product,
+                          ),
+                          SizedBox(
+                            height: 5.h,
+                          ),
+                          ButtonCircle(
+                              pathToIcon: "assets/icons/cart-white.svg",
+                              press: () {}),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+            ProductTitle(product: product),
+            ProductPrice(product: product),
+          ],
+        ),
+      ),
     );
   }
 }
