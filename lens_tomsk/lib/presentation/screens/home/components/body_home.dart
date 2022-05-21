@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lens_tomsk/presentation/screens/home/components/product_list.dart';
-import 'package:lens_tomsk/presentation/screens/home/cubit/home_screen_cubit.dart';
-import 'package:lens_tomsk/presentation/screens/home/cubit/home_screen_state.dart';
 import 'package:lens_tomsk/presentation/screens/widgets/header.dart';
 
 class BodyHome extends StatelessWidget {

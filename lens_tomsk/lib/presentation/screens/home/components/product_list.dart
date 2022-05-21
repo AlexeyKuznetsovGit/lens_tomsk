@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lens_tomsk/domain/models/Product.dart';
 import 'package:lens_tomsk/presentation/screens/details_product/details_product_screen.dart';
+import 'package:lens_tomsk/presentation/screens/widgets/buttons/button_add_cart/button_add_cart_provider.dart';
+import 'package:lens_tomsk/presentation/screens/widgets/buttons/button_favourite/button_favourite_provider.dart';
 import 'package:lens_tomsk/presentation/screens/widgets/product_card/product_card.dart';
 import 'package:lens_tomsk/presentation/screens/widgets/section_title.dart';
 
@@ -33,8 +35,8 @@ class ProductLists extends StatelessWidget {
                               builder: (context) => DetailsProductScreen(
                                   product: products[index])));
                     },
-                    child: ProductCard(product: products[index]),
-                  );
+                    child: ProductCard(product: products[index], buttonUp: ButtonFavouriteProvider(product: products[index]))
+                    );
                 }
                 return Container();
               }),
@@ -56,7 +58,7 @@ class ProductLists extends StatelessWidget {
                               builder: (context) => DetailsProductScreen(
                                   product: products[index])));
                     },
-                    child: ProductCard(product: products[index]),
+                    child: ProductCard(product: products[index], buttonUp: ButtonFavouriteProvider(product: products[index])),
                   );
                 }
                 return Container();

@@ -7,6 +7,9 @@ import 'package:lens_tomsk/presentation/screens/catalog/catalog_screen.dart';
 import 'package:lens_tomsk/presentation/screens/details_product/details_product_screen.dart';
 import 'package:lens_tomsk/presentation/screens/favourite/cubit/favourite_screen_cubit.dart';
 import 'package:lens_tomsk/presentation/screens/favourite/cubit/favourite_screen_state.dart';
+import 'package:lens_tomsk/presentation/screens/widgets/buttons/button_add_cart/button_add_cart_provider.dart';
+import 'package:lens_tomsk/presentation/screens/widgets/buttons/button_delete.dart';
+import 'package:lens_tomsk/presentation/screens/widgets/buttons/button_favourite/button_favourite_provider.dart';
 import 'package:lens_tomsk/presentation/screens/widgets/product_card/product_card.dart';
 import 'package:lens_tomsk/presentation/screens/widgets/section_description.dart';
 import 'package:lens_tomsk/presentation/screens/widgets/section_title.dart';
@@ -79,9 +82,6 @@ class BodyFavourite extends StatelessWidget {
               ),
             );
           }
-          if (state is UpdateFavouriteState) {
-            return Center(child: Text("ААААА"));
-          }
           if (state is NotEmptyFavouriteState) {
             return Padding(
               padding: EdgeInsets.only(top: 20.h),
@@ -104,7 +104,7 @@ class BodyFavourite extends StatelessWidget {
                                 builder: (context) => DetailsProductScreen(
                                     product: favouriteProducts[index])));
                       },
-                      child: ProductCard(product: favouriteProducts[index]),
+                      child: ProductCard(product: favouriteProducts[index], buttonUp: ButtonDelete(product: favouriteProducts[index])),
                     );
                   }),
             );

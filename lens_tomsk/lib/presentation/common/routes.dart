@@ -9,8 +9,8 @@ import 'package:lens_tomsk/presentation/screens/splash/splash_screen_provider.da
 final Map<String, WidgetBuilder> routes = {
   SplashScreenProvider.routeName: (context) => SplashScreenProvider(),
   HomeScreen.routeName: (context) => HomeScreen(),
-  FavouriteScreenProvider.routeName: (context) => FavouriteScreenProvider(),
   CatalogScreen.routeName: (context) => CatalogScreen(),
   CartScreen.routeName: (context) => CartScreen(),
+  FavouriteScreenProvider.routeName: (context) => FavouriteScreenProvider(),
   ProfileScreen.routeName: (context) => ProfileScreen(),
 };

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class ColorButton extends StatelessWidget {
-  const ColorButton({
+class BodyButtonFavourite extends StatelessWidget {
+  const BodyButtonFavourite({
     Key? key,
     required this.color
   }) : super(key: key);

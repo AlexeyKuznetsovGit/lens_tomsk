@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lens_tomsk/presentation/common/constants.dart';
 import 'package:lens_tomsk/domain/models/Product.dart';
-import 'package:lens_tomsk/presentation/screens/widgets/buttons/button_circle.dart';
-import 'package:lens_tomsk/presentation/screens/widgets/buttons/button_favourite/button_favourite_provider.dart';
+import 'package:lens_tomsk/presentation/screens/widgets/buttons/button_add_cart/button_add_cart_provider.dart';
 import 'package:lens_tomsk/presentation/screens/widgets/product_card/components/product_image.dart';
 import 'package:lens_tomsk/presentation/screens/widgets/product_card/components/product_title.dart';
 import 'package:lens_tomsk/presentation/screens/widgets/product_card/components/product_price.dart';
@@ -11,10 +10,12 @@ import 'package:lens_tomsk/presentation/screens/widgets/product_card/components/
 class ProductCard extends StatelessWidget {
   ProductCard({
     Key? key,
+    required this.buttonUp,
     required this.product,
   }) : super(key: key);
 
   final Product product;
+  final Widget buttonUp;
 
   @override
   Widget build(BuildContext context) {
@@ -45,16 +46,11 @@ class ProductCard extends StatelessWidget {
                       padding: EdgeInsets.only(top: 10.h, right: 10.w),
                       child: Column(
                         children: [
-                          // ButtonCircle(pathToIcon: "assets/icons/star-white.svg", press: () {}),
-                          ButtonFavouriteProvider(
-                            product: product,
-                          ),
+                          buttonUp,
                           SizedBox(
                             height: 5.h,
                           ),
-                          ButtonCircle(
-                              pathToIcon: "assets/icons/cart-white.svg",
-                              press: () {}),
+                          ButtonAddCartProvider(product: product),
                         ],
                       ),
                     ),

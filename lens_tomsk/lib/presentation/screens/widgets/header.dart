@@ -47,9 +47,3 @@ class Header extends StatelessWidget {
     ));
   }
 }
- /* prefixIcon: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
-            child: SvgPicture.asset(
-              "assets/icons/search.svg",
-            ),
-          ), */

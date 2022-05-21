@@ -20,7 +20,6 @@ class BottomNavBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      // padding: EdgeInsets.symmetric(vertical: 14),
       height: 68.h,
       decoration: BoxDecoration(
         color: Colors.white,
@@ -83,8 +82,7 @@ class BottomNavBar extends StatelessWidget {
                       ? kBlueColor
                       : kBlackColor,
                 ),
-                onPressed: () =>
-                    Navigator.pushNamed(context, FavouriteScreenProvider.routeName),
+                onPressed: () => Navigator.pushNamed(context, FavouriteScreenProvider.routeName),
               ),
               IconButton(
                 icon: SvgPicture.asset(

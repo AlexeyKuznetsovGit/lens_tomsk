@@ -6,6 +6,7 @@ import 'package:lens_tomsk/presentation/screens/favourite/favourite_screen.dart'
 class FavouriteScreenProvider extends StatelessWidget {
   const FavouriteScreenProvider({Key? key}) : super(key: key);
   static String routeName = "/favourite";
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider<FavouriteScreenCubit>(

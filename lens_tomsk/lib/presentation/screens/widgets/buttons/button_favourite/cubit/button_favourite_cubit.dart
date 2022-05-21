@@ -13,14 +13,11 @@ class ButtonFavouriteCubit extends Cubit<ButtonFavouriteState> {
 
   void makeFavourite(product) {
     favouriteProducts.add(product);
-    print(favouriteProducts.length);
     emit(FavouriteState(favouriteColor: kWhiteBlueColor));
   }
 
   void makeNotFavourite(product) {
     favouriteProducts.remove(product);
-    print(favouriteProducts.length);
     emit(NotFavouriteState(notFavouriteColor: kBlueColor));
   }
-
 }
