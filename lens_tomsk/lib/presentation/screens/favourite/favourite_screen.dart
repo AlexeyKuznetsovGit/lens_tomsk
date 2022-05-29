@@ -6,7 +6,7 @@ import 'package:lens_tomsk/presentation/screens/widgets/bottom_nav_bar.dart';
 
 class FavouriteScreen extends StatelessWidget {
   const FavouriteScreen({Key? key}) : super(key: key);
-  //static String routeName = "/favourite";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

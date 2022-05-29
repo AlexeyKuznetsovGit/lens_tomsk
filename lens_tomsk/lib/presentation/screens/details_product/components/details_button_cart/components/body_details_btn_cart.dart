@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class BodyButtonAddCart extends StatelessWidget {
-  const BodyButtonAddCart({
+class BodyDetailsBtnCart extends StatelessWidget {
+  const BodyDetailsBtnCart({
     Key? key,
     required this.color
   }) : super(key: key);
@@ -13,11 +13,11 @@ class BodyButtonAddCart extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         alignment: Alignment.center,
-        width: 28.w,
-        height: 28.h,
-        decoration:  BoxDecoration(
+         width: 154.w,
+        height: 38.h,
+        decoration: BoxDecoration(
           color: color,
-          shape: BoxShape.circle,
+          borderRadius: BorderRadius.circular(10),
         ),
         child: SvgPicture.asset(
           "assets/icons/cart-white.svg",

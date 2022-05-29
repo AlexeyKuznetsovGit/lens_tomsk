@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:lens_tomsk/presentation/common/constants.dart';
 import 'package:lens_tomsk/presentation/common/enums.dart';
-import 'package:lens_tomsk/presentation/screens/cart/cart_screen.dart';
+import 'package:lens_tomsk/presentation/screens/cart/cart_screen_provider.dart';
 import 'package:lens_tomsk/presentation/screens/catalog/catalog_screen.dart';
 import 'package:lens_tomsk/presentation/screens/favourite/favourite_screen_provider.dart';
 import 'package:lens_tomsk/presentation/screens/home/home_screen.dart';
@@ -71,7 +71,7 @@ class BottomNavBar extends StatelessWidget {
                       MenuState.cart == selectedMenu ? kBlueColor : kBlackColor,
                 ),
                 onPressed: () =>
-                    Navigator.pushNamed(context, CartScreen.routeName),
+                    Navigator.pushNamed(context, CartScreenProvider.routeName),
               ),
               IconButton(
                 icon: SvgPicture.asset(

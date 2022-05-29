@@ -4,6 +4,5 @@ import 'package:lens_tomsk/presentation/common/constants.dart';
 abstract class HomeScreenState {}
 
 class initHomeState extends HomeScreenState {
-  Color favourite = kWhiteBlueColor;
 }
 

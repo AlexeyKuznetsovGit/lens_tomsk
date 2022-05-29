@@ -14,7 +14,7 @@ class BodyCatalog extends StatelessWidget {
         children: [
           Padding(
             padding: EdgeInsets.fromLTRB(11.w, 20.h, 11.w, 20.h),
-            child: Header(width: 338,),
+            child: Header(width: 338, text: 'Поиск по названию...',),
           ),
           CategoryProductList(),
         ],

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lens_tomsk/domain/models/Product.dart';
-import 'package:lens_tomsk/presentation/screens/widgets/buttons/button_add_cart/components/body_button_add_cart.dart';
+import 'package:lens_tomsk/presentation/screens/details_product/components/details_button_cart/components/body_details_btn_cart.dart';
 import 'package:lens_tomsk/presentation/screens/widgets/buttons/button_add_cart/components/buy_dialog.dart';
 import 'package:lens_tomsk/presentation/screens/widgets/buttons/button_add_cart/cubit/button_add_cart_cubit.dart';
 import 'package:lens_tomsk/presentation/screens/widgets/buttons/button_add_cart/cubit/button_add_cart_state.dart';
 
-class ButtonAddCart extends StatelessWidget {
-  const ButtonAddCart({
+class DetailsButtonCart extends StatelessWidget {
+  const DetailsButtonCart({
     Key? key,
     required this.product,
   }) : super(key: key);
@@ -25,7 +25,7 @@ class ButtonAddCart extends StatelessWidget {
               BlocProvider.of<ButtonAddCartCubit>(context)
                   .removeFromCart(product);
             },
-            child: BodyButtonAddCart(color: state.addColor),
+            child:BodyDetailsBtnCart(color: state.addColor),
           );}
           if (state is NotAddState){
             return GestureDetector(
@@ -34,7 +34,7 @@ class ButtonAddCart extends StatelessWidget {
               /* BlocProvider.of<ButtonAddCartCubit>(context)
                   .makeFavourite(product); */
             },
-            child: BodyButtonAddCart(color: state.notAddColor),
+            child: BodyDetailsBtnCart(color: state.notAddColor),
           );
           }
         return Container();

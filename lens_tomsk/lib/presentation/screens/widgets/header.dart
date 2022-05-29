@@ -4,8 +4,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:lens_tomsk/presentation/common/constants.dart';
 
 class Header extends StatelessWidget {
-  const Header({Key? key, required this.width}) : super(key: key);
-
+  const Header({Key? key, required this.width, required this.text}) : super(key: key);
+  final String text;
   final int width;
 
   @override
@@ -30,7 +30,7 @@ class Header extends StatelessWidget {
               EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
           enabledBorder: InputBorder.none,
           focusedBorder: InputBorder.none,
-          hintText: 'Поиск по названию...',
+          hintText: text,
           hintStyle: TextStyle(
               fontFamily: 'Poppins-Regular',
               fontSize: 12.sp,

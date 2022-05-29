@@ -1,9 +1,11 @@
+import 'package:eticon_api/eticon_api.dart';
 import 'package:flutter/material.dart';
 import 'package:lens_tomsk/presentation/common/routes.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lens_tomsk/presentation/screens/splash/splash_screen_provider.dart';
 
 void main() {
+  Api.init(baseUrl: 'http://ancient-beyond-12836.herokuapp.com/api/');
   runApp(MyApp());
 }
 

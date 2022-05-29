@@ -26,14 +26,29 @@ class BodySplash extends StatelessWidget {
                   builder: (context, state) {
                 if (state is SplashScreenLoadingState) {
                   BlocProvider.of<SplashScreenCubit>(context).getProducts();
-                  return Center(
+/*                   return Center(
                     child: CircularProgressIndicator(),
-                  );
+                  ); */
                 }
                 if (state is SplashScreenLoadedState) {
                   Future.delayed(Duration.zero, () {
-                    Navigator.pushNamed(context, HomeScreen.routeName);
+                    Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => HomeScreen(),
+                    ),
+                    (Route<dynamic> route) => false,
+                  );
                   });
+                  
+                 /*  Future.delayed(Duration.zero, () {
+                    Navigator.pushNamed(context, HomeScreen.routeName);
+                  }); */
+                }
+                if (state is SplashScreenErrorState) {
+                  return Center(
+                    child: Text(state.errorMsg),
+                  );
                 }
                 return Container();
               }),

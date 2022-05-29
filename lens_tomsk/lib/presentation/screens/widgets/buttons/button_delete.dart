@@ -7,8 +7,6 @@ import 'package:lens_tomsk/domain/models/Product.dart';
 import 'package:lens_tomsk/presentation/common/constants.dart';
 import 'package:lens_tomsk/presentation/screens/favourite/cubit/favourite_screen_cubit.dart';
 import 'package:lens_tomsk/presentation/screens/favourite/cubit/favourite_screen_state.dart';
-import 'package:lens_tomsk/presentation/screens/favourite/favourite_screen_provider.dart';
-
 
 class ButtonDelete extends StatelessWidget {
   const ButtonDelete({

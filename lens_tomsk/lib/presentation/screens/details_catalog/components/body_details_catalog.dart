@@ -29,6 +29,7 @@ class BodyDetailsCatalog extends StatelessWidget {
                 padding: EdgeInsets.only(top: 20.h, right: 11.w),
                 child: Header(
                   width: 293,
+                  text: 'Поиск по названию...',
                 ),
               ),
             ],

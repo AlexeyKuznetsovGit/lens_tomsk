@@ -18,7 +18,7 @@ class ProductPrice extends StatelessWidget {
       children: [
         if (product.oldPrice != 0) ...[
           Container(
-            padding: EdgeInsets.only(right: 5),
+            padding: EdgeInsets.only(right: 5.w),
             child: Text(
               "${product.price} \₽",
               style: TextStyle(
@@ -44,7 +44,6 @@ class ProductPrice extends StatelessWidget {
           ),
         ] else ...[
           Container(
-            padding: EdgeInsets.only(right: 5),
             child: Text(
               "${product.price} \₽",
               style: TextStyle(

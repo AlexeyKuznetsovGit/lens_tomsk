@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lens_tomsk/domain/models/Product.dart';
 import 'package:lens_tomsk/presentation/common/constants.dart';
-import 'package:lens_tomsk/presentation/screens/details_product/components/button_details.dart';
+import 'package:lens_tomsk/presentation/screens/details_product/components/details_button_cart/details_button_cart_provider.dart';
+import 'package:lens_tomsk/presentation/screens/details_product/components/details_button_fav/details_button_fav_provider.dart';
 import 'package:lens_tomsk/presentation/screens/details_product/components/details_product_info.dart';
 import 'package:lens_tomsk/presentation/screens/widgets/product_card/components/product_price.dart';
 
@@ -41,13 +42,11 @@ class DetailsTitlePriceButtons extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                ButtonDetails(
-                    pathToIcon: "assets/icons/star-white.svg", press: () {}),
+               DetailsButtonFavProvider(product: product,),
                 SizedBox(
                   width: 10.w,
                 ),
-                ButtonDetails(
-                    pathToIcon: "assets/icons/cart-white.svg", press: () {})
+                DetailsButtonCartProvider(product: product,)
               ],
             )
           ],
