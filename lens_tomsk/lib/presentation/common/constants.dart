@@ -7,3 +7,5 @@ const kHintTextColor = Color(0xFFADADAD);
 const kWhiteBlueColor = Color(0xFF74A6F6);
 const kGreyColor = Color(0xFFE9E9E9);
 const kBlackColor = Color(0xFF000004);
+const kGreyNoActivity = Color(0xFF374957);
+const kGreenSnackBar = Color(0xFF22C878);

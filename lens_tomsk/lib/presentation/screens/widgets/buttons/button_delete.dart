@@ -37,30 +37,4 @@ class ButtonDelete extends StatelessWidget {
         )),
     ); });
   }
-   /* @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-         favouriteProducts.remove(product);
-
- Navigator.pushAndRemoveUntil(
-  context,
-  MaterialPageRoute(builder: (context) => FavouriteScreenProvider()),
-  (Route<dynamic> route) => false,
-); 
-      },
-      child: Container(
-        alignment: Alignment.center,
-        width: 28.w,
-        height: 28.h,
-        decoration: BoxDecoration(
-          color: kBlueColor,
-          shape: BoxShape.circle,
-        ),
-        child: SvgPicture.asset(
-          "assets/icons/delete-item.svg",
-          
-        )),
-    );
-  } */ 
 }

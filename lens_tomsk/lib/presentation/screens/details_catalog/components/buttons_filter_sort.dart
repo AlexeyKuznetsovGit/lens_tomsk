@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lens_tomsk/presentation/common/constants.dart';
+import 'package:lens_tomsk/presentation/screens/details_catalog/components/filters_dialog.dart';
+import 'package:lens_tomsk/presentation/screens/details_catalog/components/sort_dialog.dart';
 import 'package:lens_tomsk/presentation/screens/widgets/buttons/button_text.dart';
 
 class ButtonsFilterSort extends StatelessWidget {
@@ -26,9 +28,13 @@ class ButtonsFilterSort extends StatelessWidget {
       child: Row(
          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            ButtonText(text: "Фильтры", press: (){}),
+            ButtonText(buttonColor: kGreyColor,textColor: kBlackColor,width: 149,text: "Фильтры", press: (){
+              showFiltersDialog(context);
+            }),
             SizedBox(width: 20.w),
-            ButtonText(text: "По умолчанию", press: (){})
+            ButtonText(buttonColor: kGreyColor,textColor: kBlackColor,width: 149,text: "По умолчанию", press: (){
+              showSortDialog(context);
+            })
           ]),
     );
   }
