@@ -8,6 +8,7 @@ import 'package:lens_tomsk/presentation/screens/catalog/catalog_screen.dart';
 import 'package:lens_tomsk/presentation/screens/favourite/favourite_screen_provider.dart';
 import 'package:lens_tomsk/presentation/screens/home/home_screen.dart';
 import 'package:lens_tomsk/presentation/screens/profile/profile_screen.dart';
+import 'package:lens_tomsk/presentation/screens/sign_in/sign_in_screen.dart';
 
 class BottomNavBar extends StatelessWidget {
   const BottomNavBar({
@@ -94,7 +95,7 @@ class BottomNavBar extends StatelessWidget {
                       : kBlackColor,
                 ),
                 onPressed: () =>
-                    Navigator.pushNamed(context, ProfileScreen.routeName),
+                    Navigator.pushNamed(context, SignInScreen.routeName),
               ),
             ],
           )),

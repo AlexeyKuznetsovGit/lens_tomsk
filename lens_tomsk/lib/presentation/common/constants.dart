@@ -9,3 +9,6 @@ const kGreyColor = Color(0xFFE9E9E9);
 const kBlackColor = Color(0xFF000004);
 const kGreyNoActivity = Color(0xFF374957);
 const kGreenSnackBar = Color(0xFF22C878);
+
+final RegExp emailValidatorRegExp =
+    RegExp(r"^[a-zA-Z0-9.]+@[a-zA-Z0-9]+\.[a-zA-Z]+");

@@ -4,6 +4,7 @@ import 'package:lens_tomsk/presentation/screens/catalog/catalog_screen.dart';
 import 'package:lens_tomsk/presentation/screens/favourite/favourite_screen_provider.dart';
 import 'package:lens_tomsk/presentation/screens/home/home_screen.dart';
 import 'package:lens_tomsk/presentation/screens/profile/profile_screen.dart';
+import 'package:lens_tomsk/presentation/screens/sign_in/sign_in_screen.dart';
 import 'package:lens_tomsk/presentation/screens/splash/splash_screen_provider.dart';
 
 final Map<String, WidgetBuilder> routes = {
@@ -12,5 +13,6 @@ final Map<String, WidgetBuilder> routes = {
   CatalogScreen.routeName: (context) => CatalogScreen(),
   CartScreenProvider.routeName: (context) => CartScreenProvider(),
   FavouriteScreenProvider.routeName: (context) => FavouriteScreenProvider(),
-  ProfileScreen.routeName: (context) => ProfileScreen(),
+  SignInScreen.routeName: (context) => SignInScreen(),
+  /* ProfileScreen.routeName: (context) => ProfileScreen(), */
 };

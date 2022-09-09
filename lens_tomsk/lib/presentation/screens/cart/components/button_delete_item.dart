@@ -22,12 +22,7 @@ class ButtonDeleteItem extends StatelessWidget {
           addedCartProducts.length > 0
               ? NotEmptyCartState()
               : EmptyCartState());},
-      child: Container(
-              padding: EdgeInsets.fromLTRB(3.8.w, 3.8.h, 3.8.w, 3.8.h),
-              height: 16.h,
-              width: 16.w,
-              child: SvgPicture.asset("assets/icons/x.svg"),
-            ),
+      child: SvgPicture.asset("assets/icons/krest.svg"),
     );
   }
 }
