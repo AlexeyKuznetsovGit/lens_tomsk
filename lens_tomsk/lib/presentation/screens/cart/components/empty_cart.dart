@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:lens_tomsk/presentation/common/constants.dart';
 import 'package:lens_tomsk/presentation/screens/catalog/catalog_screen.dart';
 import 'package:lens_tomsk/presentation/screens/widgets/section_description.dart';
 import 'package:lens_tomsk/presentation/screens/widgets/section_title.dart';
+import 'package:get/get_navigation/src/routes/transitions_type.dart' as tr;
 
 class EmptyCart extends StatelessWidget {
   const EmptyCart({
@@ -41,7 +43,7 @@ class EmptyCart extends StatelessWidget {
           ),
           GestureDetector(
             onTap: () => {
-              Navigator.pushNamed(context, CatalogScreen.routeName),
+              Get.to(() => const CatalogScreen(),  transition: tr.Transition.cupertino)
             },
             child: Container(
               alignment: Alignment.center,

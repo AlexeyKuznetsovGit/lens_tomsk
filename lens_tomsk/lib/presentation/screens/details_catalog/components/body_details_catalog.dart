@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:lens_tomsk/data/repository/Category_products.dart';
 import 'package:lens_tomsk/presentation/screens/details_catalog/components/buttons_filter_sort.dart';
 import 'package:lens_tomsk/presentation/screens/details_product/details_product_screen.dart';
@@ -7,6 +8,7 @@ import 'package:lens_tomsk/presentation/screens/widgets/buttons/button_back.dart
 import 'package:lens_tomsk/presentation/screens/widgets/buttons/button_favourite/button_favourite_provider.dart';
 import 'package:lens_tomsk/presentation/screens/widgets/header.dart';
 import 'package:lens_tomsk/presentation/screens/widgets/product_card/product_card.dart';
+import 'package:get/get_navigation/src/routes/transitions_type.dart' as tr;
 
 class BodyDetailsCatalog extends StatelessWidget {
   const BodyDetailsCatalog({Key? key, required this.category_name})
@@ -53,11 +55,7 @@ class BodyDetailsCatalog extends StatelessWidget {
                 itemBuilder: (context, index) {
                   return GestureDetector(
                     onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => DetailsProductScreen(
-                                  product: categoryProducts[index])));
+                       Get.to(() => DetailsProductScreen(product: categoryProducts[index]),  transition: tr.Transition.cupertino);
                     },
                     child: ProductCard(product: categoryProducts[index], buttonUp: ButtonFavouriteProvider(product: categoryProducts[index])),
                   );

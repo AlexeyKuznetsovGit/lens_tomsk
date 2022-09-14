@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 import 'package:lens_tomsk/presentation/common/constants.dart';
 import 'package:lens_tomsk/presentation/common/enums.dart';
 import 'package:lens_tomsk/presentation/screens/cart/cart_screen_provider.dart';
@@ -9,6 +10,7 @@ import 'package:lens_tomsk/presentation/screens/favourite/favourite_screen_provi
 import 'package:lens_tomsk/presentation/screens/home/home_screen.dart';
 import 'package:lens_tomsk/presentation/screens/profile/profile_screen.dart';
 import 'package:lens_tomsk/presentation/screens/sign_in/sign_in_screen.dart';
+import 'package:get/get_navigation/src/routes/transitions_type.dart' as tr;
 
 class BottomNavBar extends StatelessWidget {
   const BottomNavBar({
@@ -49,7 +51,7 @@ class BottomNavBar extends StatelessWidget {
                   color:
                       MenuState.home == selectedMenu ? kBlueColor : kBlackColor,
                 ),
-                onPressed: () => Navigator.pushNamed(context, HomeScreen.routeName), 
+                onPressed: () {Get.to(() => const HomeScreen(),  transition: tr.Transition.cupertino);}, 
               ),
               IconButton(
                 icon: SvgPicture.asset(
@@ -60,8 +62,7 @@ class BottomNavBar extends StatelessWidget {
                       ? kBlueColor
                       : kBlackColor,
                 ),
-                onPressed: () =>
-                    Navigator.pushNamed(context, CatalogScreen.routeName),
+                onPressed: () {Get.to(() => const CatalogScreen(),  transition: tr.Transition.cupertino);},
               ),
               IconButton(
                 icon: SvgPicture.asset(
@@ -71,8 +72,7 @@ class BottomNavBar extends StatelessWidget {
                   color:
                       MenuState.cart == selectedMenu ? kBlueColor : kBlackColor,
                 ),
-                onPressed: () =>
-                    Navigator.pushNamed(context, CartScreenProvider.routeName),
+                onPressed: () {Get.to(() => const CartScreenProvider(),  transition: tr.Transition.cupertino);},
               ),
               IconButton(
                 icon: SvgPicture.asset(
@@ -83,7 +83,7 @@ class BottomNavBar extends StatelessWidget {
                       ? kBlueColor
                       : kBlackColor,
                 ),
-                onPressed: () => Navigator.pushNamed(context, FavouriteScreenProvider.routeName),
+                onPressed: () {Get.to(() => const FavouriteScreenProvider(),  transition: tr.Transition.cupertino);},
               ),
               IconButton(
                 icon: SvgPicture.asset(
@@ -94,8 +94,8 @@ class BottomNavBar extends StatelessWidget {
                       ? kBlueColor
                       : kBlackColor,
                 ),
-                onPressed: () =>
-                    Navigator.pushNamed(context, SignInScreen.routeName),
+                onPressed: () {Get.to(() => const SignInScreen(),  transition: tr.Transition.cupertino);}
+                    /* Navigator.pushNamed(context, SignInScreen.routeName), */
               ),
             ],
           )),

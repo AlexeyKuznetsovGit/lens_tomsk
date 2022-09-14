@@ -4,7 +4,6 @@ import 'package:lens_tomsk/presentation/screens/splash/cubit/splash_screen_cubit
 import 'package:lens_tomsk/presentation/screens/splash/splash_screen.dart';
 
 class SplashScreenProvider extends StatelessWidget {
-  static String routeName = "/splash";
   const SplashScreenProvider({Key? key}) : super(key: key);
 
   @override

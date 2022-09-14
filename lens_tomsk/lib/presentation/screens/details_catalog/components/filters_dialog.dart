@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lens_tomsk/presentation/common/constants.dart';
+import 'package:lens_tomsk/presentation/screens/details_catalog/components/range_slider.dart';
 import 'package:lens_tomsk/presentation/screens/widgets/buttons/button_close_window.dart';
 import 'package:lens_tomsk/presentation/screens/details_catalog/components/price_container.dart';
 import 'package:lens_tomsk/presentation/screens/widgets/buttons/button_text.dart';
@@ -66,25 +67,9 @@ void showFiltersDialog(BuildContext context) => showDialog(
                     ),
                   ),
                 ),
-                Row(
-                  children: [
-                    Container(
-                      alignment: Alignment.centerLeft,
-                      child: PriceContainer(
-                        text: "От",
-                        price: "0",
-                      ),
-                    ),
-                    Container(
-                      alignment: Alignment.centerLeft,
-                      child: PriceContainer(
-                        text: "До",
-                        price: "100 000",
-                      ),
-                    ),
-                  ],
-                ),
-                Container(
+                RangeSliderWidget(),
+                SizedBox(height: 20.h,),
+                /* Container(
                   margin: EdgeInsets.only(bottom: 20.h),
                   height: 16.h,
                   width: 318.w,
@@ -123,7 +108,7 @@ void showFiltersDialog(BuildContext context) => showDialog(
                           ),
                         )
                       ]),
-                ),
+                ), */
                 Container(
                   alignment: Alignment.centerLeft,
                   child: Container(

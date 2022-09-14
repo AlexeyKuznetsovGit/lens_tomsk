@@ -20,141 +20,139 @@ class _InputFieldsState extends State<InputFields> {
 
   @override
   Widget build(BuildContext context) {
-    return Form(
-      child: Container(
-        width: 338.w,
-        height: 292.h,
-        decoration: BoxDecoration(
-          color: kWhiteColor,
-          borderRadius: BorderRadius.circular(10),
-          boxShadow: [
-            BoxShadow(
-              color: kBlueColor.withOpacity(0.1),
-              blurRadius: 5,
-            ),
-          ],
-        ),
-        child: Column(children: [
-          Container(
-            width: 318.w,
-            height: 24.h,
-            margin: EdgeInsets.fromLTRB(10.w, 20.h, 10.w, 20.h),
-            alignment: Alignment.center,
-            child: SectionTitle(text: "Вход"),
+    return Container(
+      width: 338.w,
+      height: 292.h,
+      decoration: BoxDecoration(
+        color: kWhiteColor,
+        borderRadius: BorderRadius.circular(10),
+        boxShadow: [
+          BoxShadow(
+            color: kBlueColor.withOpacity(0.1),
+            blurRadius: 5,
           ),
-          Container(
-            width: 298.w,
-            height: 18.h,
-            margin: EdgeInsets.only(left: 20.w, right: 20.w, bottom: 4.h),
-            alignment: Alignment.centerLeft,
-            child: Text(
-              "Ваш e-mail",
-              style: TextStyle(
-                color: kHintTextColor,
-                fontFamily: 'Poppins-Regular',
-                fontSize: 12.sp,
-                fontWeight: FontWeight.w400,
-              ),
-            ),
-          ),
-          Container(
-            width: 318.w,
-            height: 35.h,
-            margin: EdgeInsets.only(left: 10.w, right: 10.w, bottom: 10.h),
-            decoration: BoxDecoration(
-              color: kBackGroundColor,
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: TextFormField(
-              keyboardType: TextInputType.emailAddress,
-              controller: _emailField,
-              validator: (value) {
-                if (value!.isEmpty) {
-                  return "Please Enter your email";
-                } else if (!emailValidatorRegExp.hasMatch(value)) {
-                  return "Please Enter Valid Email";
-                }
-              },
-              decoration: InputDecoration(
-                hintText: "Введите Ваш email",
-                contentPadding:
-                    EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
-                hintStyle: TextStyle(
-                  color: kHintTextColor,
-                  fontFamily: 'Poppins-Regular',
-                  fontSize: 12.sp,
-                  fontWeight: FontWeight.w400,
-                ),
-                border: InputBorder.none,
-              ),
-            ),
-          ),
-          Container(
-            width: 298.w,
-            height: 18.h,
-            margin: EdgeInsets.only(left: 20.w, right: 20.w, bottom: 4.h),
-            alignment: Alignment.centerLeft,
-            child: Text(
-              "Ваш пароль",
-              style: TextStyle(
-                color: kHintTextColor,
-                fontFamily: 'Poppins-Regular',
-                fontSize: 12.sp,
-                fontWeight: FontWeight.w400,
-              ),
-            ),
-          ),
-           Container(
-            width: 318.w,
-            height: 35.h,
-            margin: EdgeInsets.only(left: 10.w, right: 10.w, bottom: 10.h),
-            decoration: BoxDecoration(
-              color: kBackGroundColor,
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: TextFormField(
-              obscureText: true,
-              controller: _passwordField,
-              validator: (value) {
-                if (value!.isEmpty) {
-                  return "Please Enter your password";
-                } else if (value.length < 8) {
-                  return "Password is too short";
-                }
-              },
-              decoration: InputDecoration(
-                hintText: "Введите Ваш пароль",
-                contentPadding:
-                    EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
-                hintStyle: TextStyle(
-                  color: kHintTextColor,
-                  fontFamily: 'Poppins-Regular',
-                  fontSize: 12.sp,
-                  fontWeight: FontWeight.w400,
-                ),
-                border: InputBorder.none,
-              ),
-            ),
-          ),
-          SizedBox(height: 10.h,),
-          ButtonText(text: "Войти", buttonColor: kBlueColor, press: () {}, textColor: kWhiteColor, width: 318),
-          SizedBox(height: 10.h,),
-          Container(
-           width: 298.w,
-           height: 16.h,
-           alignment: Alignment.center,
-           child: Text(
-                    "Забыли пароль?",
-                    style: TextStyle(
-                      color: kBlueColor,
-                      fontFamily: 'OpenSans-Regular',
-                      fontSize: 12.sp,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-          )
-        ]),
+        ],
       ),
+      child: Column(children: [
+        Container(
+          width: 318.w,
+          height: 24.h,
+          margin: EdgeInsets.fromLTRB(10.w, 20.h, 10.w, 20.h),
+          alignment: Alignment.center,
+          child: SectionTitle(text: "Вход"),
+        ),
+        Container(
+          width: 298.w,
+          height: 18.h,
+          margin: EdgeInsets.only(left: 20.w, right: 20.w, bottom: 4.h),
+          alignment: Alignment.centerLeft,
+          child: Text(
+            "Ваш e-mail",
+            style: TextStyle(
+              color: kHintTextColor,
+              fontFamily: 'Poppins-Regular',
+              fontSize: 12.sp,
+              fontWeight: FontWeight.w400,
+            ),
+          ),
+        ),
+        Container(
+          width: 318.w,
+          height: 35.h,
+          margin: EdgeInsets.only(left: 10.w, right: 10.w, bottom: 10.h),
+          decoration: BoxDecoration(
+            color: kBackGroundColor,
+            borderRadius: BorderRadius.circular(10),
+          ),
+          child: TextFormField(
+            keyboardType: TextInputType.emailAddress,
+            controller: _emailField,
+            validator: (value) {
+              if (value!.isEmpty) {
+                return "Please Enter your email";
+              } else if (!emailValidatorRegExp.hasMatch(value)) {
+                return "Please Enter Valid Email";
+              }
+            },
+            decoration: InputDecoration(
+              hintText: "Введите Ваш email",
+              contentPadding:
+                  EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
+              hintStyle: TextStyle(
+                color: kHintTextColor,
+                fontFamily: 'Poppins-Regular',
+                fontSize: 12.sp,
+                fontWeight: FontWeight.w400,
+              ),
+              border: InputBorder.none,
+            ),
+          ),
+        ),
+        Container(
+          width: 298.w,
+          height: 18.h,
+          margin: EdgeInsets.only(left: 20.w, right: 20.w, bottom: 4.h),
+          alignment: Alignment.centerLeft,
+          child: Text(
+            "Ваш пароль",
+            style: TextStyle(
+              color: kHintTextColor,
+              fontFamily: 'Poppins-Regular',
+              fontSize: 12.sp,
+              fontWeight: FontWeight.w400,
+            ),
+          ),
+        ),
+         Container(
+          width: 318.w,
+          height: 35.h,
+          margin: EdgeInsets.only(left: 10.w, right: 10.w, bottom: 10.h),
+          decoration: BoxDecoration(
+            color: kBackGroundColor,
+            borderRadius: BorderRadius.circular(10),
+          ),
+          child: TextFormField(
+            obscureText: true,
+            controller: _passwordField,
+            validator: (value) {
+              if (value!.isEmpty) {
+                return "Please Enter your password";
+              } else if (value.length < 8) {
+                return "Password is too short";
+              }
+            },
+            decoration: InputDecoration(
+              hintText: "Введите Ваш пароль",
+              contentPadding:
+                  EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
+              hintStyle: TextStyle(
+                color: kHintTextColor,
+                fontFamily: 'Poppins-Regular',
+                fontSize: 12.sp,
+                fontWeight: FontWeight.w400,
+              ),
+              border: InputBorder.none,
+            ),
+          ),
+        ),
+        SizedBox(height: 10.h,),
+        ButtonText(text: "Войти", buttonColor: kBlueColor, press: () {}, textColor: kWhiteColor, width: 318),
+        SizedBox(height: 10.h,),
+        Container(
+         width: 298.w,
+         height: 16.h,
+         alignment: Alignment.center,
+         child: Text(
+                  "Забыли пароль?",
+                  style: TextStyle(
+                    color: kBlueColor,
+                    fontFamily: 'OpenSans-Regular',
+                    fontSize: 12.sp,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+        )
+      ]),
     );
   }
 }

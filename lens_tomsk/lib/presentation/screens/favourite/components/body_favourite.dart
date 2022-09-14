@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:lens_tomsk/data/repository/Favourite_product.dart';
 import 'package:lens_tomsk/presentation/common/constants.dart';
 import 'package:lens_tomsk/presentation/screens/catalog/catalog_screen.dart';
@@ -11,6 +12,7 @@ import 'package:lens_tomsk/presentation/screens/widgets/buttons/button_delete.da
 import 'package:lens_tomsk/presentation/screens/widgets/product_card/product_card.dart';
 import 'package:lens_tomsk/presentation/screens/widgets/section_description.dart';
 import 'package:lens_tomsk/presentation/screens/widgets/section_title.dart';
+import 'package:get/get_navigation/src/routes/transitions_type.dart' as tr;
 
 class BodyFavourite extends StatelessWidget {
   const BodyFavourite({Key? key}) : super(key: key);
@@ -55,7 +57,7 @@ class BodyFavourite extends StatelessWidget {
                     ),
                     GestureDetector(
                       onTap: () => {
-                        Navigator.pushNamed(context, CatalogScreen.routeName),
+                        Get.to(() => const CatalogScreen(),  transition: tr.Transition.cupertino)
                       },
                       child: Container(
                         alignment: Alignment.center,
