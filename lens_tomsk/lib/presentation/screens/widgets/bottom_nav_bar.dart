@@ -7,8 +7,7 @@ import 'package:lens_tomsk/presentation/common/enums.dart';
 import 'package:lens_tomsk/presentation/screens/cart/cart_screen_provider.dart';
 import 'package:lens_tomsk/presentation/screens/catalog/catalog_screen.dart';
 import 'package:lens_tomsk/presentation/screens/favourite/favourite_screen_provider.dart';
-import 'package:lens_tomsk/presentation/screens/home/home_screen.dart';
-import 'package:lens_tomsk/presentation/screens/profile/profile_screen.dart';
+import 'package:lens_tomsk/presentation/screens/home/home_screen_provider.dart';
 import 'package:lens_tomsk/presentation/screens/sign_in/sign_in_screen.dart';
 import 'package:get/get_navigation/src/routes/transitions_type.dart' as tr;
 
@@ -51,7 +50,7 @@ class BottomNavBar extends StatelessWidget {
                   color:
                       MenuState.home == selectedMenu ? kBlueColor : kBlackColor,
                 ),
-                onPressed: () {Get.to(() => const HomeScreen(),  transition: tr.Transition.cupertino);}, 
+                onPressed: () {Get.to(() => const HomeScreenProvider(),  transition: tr.Transition.cupertino);}, 
               ),
               IconButton(
                 icon: SvgPicture.asset(

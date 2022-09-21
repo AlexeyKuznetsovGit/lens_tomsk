@@ -10,11 +10,16 @@ class SignInScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: kBackGroundColor,
-      body: BodySignInScreen(),
-      bottomNavigationBar: BottomNavBar(
-        selectedMenu: MenuState.profile,
+    return GestureDetector(
+      onTap: () {
+        FocusScope.of(context).unfocus();
+      },
+      child: Scaffold(
+        backgroundColor: kBackGroundColor,
+        body: BodySignInScreen(),
+        bottomNavigationBar: BottomNavBar(
+          selectedMenu: MenuState.profile,
+        ),
       ),
     );
   }
