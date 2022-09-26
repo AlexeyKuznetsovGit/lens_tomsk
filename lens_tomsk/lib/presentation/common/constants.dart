@@ -17,6 +17,9 @@ const kGreenSnackBar = Color(0xFF22C878);
 final RegExp emailValidatorRegExp =
     RegExp(r"^[a-zA-Z0-9.]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
 
+    final RegExp nameValidatorRegExp =
+     RegExp('[a-zA-Z]');
+
 // styles
 
  TextStyle poppinsBold16 = TextStyle(

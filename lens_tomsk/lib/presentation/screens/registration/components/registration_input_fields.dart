@@ -3,18 +3,19 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lens_tomsk/presentation/common/constants.dart';
 import 'package:lens_tomsk/presentation/screens/widgets/buttons/button_text.dart';
 import 'package:lens_tomsk/presentation/screens/widgets/input_text_field.dart';
-import 'package:lens_tomsk/presentation/screens/widgets/section_title.dart';
 
-class InputFields extends StatefulWidget {
-  const InputFields({
+class RegistrationInputFields extends StatefulWidget {
+  const RegistrationInputFields({
     Key? key,
   }) : super(key: key);
 
   @override
-  State<InputFields> createState() => _InputFieldsState();
+  State<RegistrationInputFields> createState() =>
+      _RegistrationInputFieldsState();
 }
 
-class _InputFieldsState extends State<InputFields> {
+class _RegistrationInputFieldsState extends State<RegistrationInputFields> {
+  final _nameField = TextEditingController();
   final _emailField = TextEditingController();
   final _passwordField = TextEditingController();
   final _formKey = GlobalKey<FormState>();
@@ -41,10 +42,21 @@ class _InputFieldsState extends State<InputFields> {
               child: Padding(
                 padding: EdgeInsets.only(top: 20.h, bottom: 20.h),
                 child: Text(
-                  "Вход",
+                  "Регистрация",
                   style: poppinsBold16,
                 ),
               ),
+            ),
+            InputTextField(
+              isName: true,
+              controller: _nameField,
+              title: 'Имя',
+              obscureText: false,
+              hintText: "Иван",
+              textInpuType: TextInputType.text,
+            ),
+            SizedBox(
+              height: 10.h,
             ),
             InputTextField(
               isEmail: true,
@@ -54,43 +66,29 @@ class _InputFieldsState extends State<InputFields> {
               hintText: "example@mail.ru",
               textInpuType: TextInputType.emailAddress,
             ),
-            SizedBox(height: 10.h,),
-            InputTextField(
-              isEmail: false,
-              controller: _passwordField,
-              title: 'Ваш пароль',
-               obscureText: true,
-              hintText: "********",
-              textInpuType: TextInputType.text
+            SizedBox(
+              height: 10.h,
             ),
-             SizedBox(height: 20.h,),
+            InputTextField(
+                isPassword: true,
+                controller: _passwordField,
+                title: 'Ваш пароль',
+                obscureText: true,
+                hintText: "********",
+                textInpuType: TextInputType.text),
+            SizedBox(
+              height: 20.h,
+            ),
             ButtonText(
-                text: "Войти",
+                text: "Зарегистрироваться",
                 buttonColor: kBlueColor,
                 press: () {
                   if (_formKey.currentState!.validate()) {
-                    print('Авторизация успешна');
+                    print('Регистрация успешна');
                   }
                 },
                 textColor: kWhiteColor,
                 width: 318),
-            SizedBox(
-              height: 10.h,
-            ),
-            Container(
-              width: 298.w,
-              height: 16.h,
-              alignment: Alignment.center,
-              child: Text(
-                "Забыли пароль?",
-                style: TextStyle(
-                  color: kBlueColor,
-                  fontFamily: 'OpenSans-Regular',
-                  fontSize: 12.sp,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-            ),
             SizedBox(
               height: 20.h,
             ),

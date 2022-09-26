@@ -3,26 +3,26 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lens_tomsk/presentation/common/constants.dart';
 
 class InputTextField extends StatelessWidget {
-  const InputTextField(
-      {Key? key,
-      required TextEditingController controller,
-      required this.title,
-      required this.textInpuType,
-      required this.hintText,
-      required this.obscureText,
-      this.textError = '',
-      required this.isEmail,
-      this.additionalError = false})
-      : _controller = controller,
+  const InputTextField({
+    Key? key,
+    required TextEditingController controller,
+    required this.title,
+    required this.textInpuType,
+    required this.hintText,
+    required this.obscureText,
+    this.isEmail = false,
+    this.isPassword = false,
+    this.isName = false,
+  })  : _controller = controller,
         super(key: key);
 
   final TextEditingController _controller;
   final String title;
   final TextInputType textInpuType;
   final String hintText;
-  final String textError;
   final bool isEmail;
-  final bool additionalError;
+  final bool isPassword;
+  final bool isName;
   final bool obscureText;
 
   @override
@@ -44,7 +44,10 @@ class InputTextField extends StatelessWidget {
         ),
       ),
       Padding(
-        padding: EdgeInsets.only(left: 10.w, right: 10.w,),
+        padding: EdgeInsets.only(
+          left: 10.w,
+          right: 10.w,
+        ),
         child: TextFormField(
           obscureText: obscureText,
           keyboardType: textInpuType,
@@ -52,15 +55,15 @@ class InputTextField extends StatelessWidget {
           validator: (value) {
             if (value!.isEmpty) {
               return "Пожалуйста введите данные";
-            } else if (isEmail
-                ? !emailValidatorRegExp.hasMatch(value)
-                : value.length < 8) {
-              return isEmail
-                  ? "Введены некорректные символы"
-                  : "Пароль слишком короткий";
             }
-            if (additionalError) {
-              return textError;
+            if (isEmail && !emailValidatorRegExp.hasMatch(value)) {
+              return "Введены некорректные символы";
+            }
+            if (isPassword && value.length < 8) {
+              "Пароль слишком короткий";
+            }
+            if (isName && !nameValidatorRegExp.hasMatch(value)) {
+              return "Имя введено некорректно";
             }
           },
           decoration: InputDecoration(
