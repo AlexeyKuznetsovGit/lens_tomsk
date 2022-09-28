@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:lens_tomsk/presentation/common/constants.dart';
+import 'package:lens_tomsk/presentation/screens/profile/profile_screen.dart';
 import 'package:lens_tomsk/presentation/screens/widgets/buttons/button_text.dart';
 import 'package:lens_tomsk/presentation/screens/widgets/input_text_field.dart';
+import 'package:get/get_navigation/src/routes/transitions_type.dart' as tr;
 
 class RegistrationInputFields extends StatefulWidget {
   const RegistrationInputFields({
@@ -75,7 +78,7 @@ class _RegistrationInputFieldsState extends State<RegistrationInputFields> {
                 title: 'Ваш пароль',
                 obscureText: true,
                 hintText: "********",
-                textInpuType: TextInputType.text),
+                textInpuType: TextInputType.number),
             SizedBox(
               height: 20.h,
             ),
@@ -84,7 +87,13 @@ class _RegistrationInputFieldsState extends State<RegistrationInputFields> {
                 buttonColor: kBlueColor,
                 press: () {
                   if (_formKey.currentState!.validate()) {
-                    print('Регистрация успешна');
+                    Get.to(
+                        ProfileScreen(
+                          name: _nameField.text,
+                          email: _emailField.text,
+                          password: _passwordField.text,
+                        ),
+                        transition: tr.Transition.cupertino);
                   }
                 },
                 textColor: kWhiteColor,

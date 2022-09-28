@@ -51,7 +51,15 @@ class BodySignInScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-                  ButtonText(text: "Зарегистрироваться", buttonColor: kGreyColor, press: (){Get.to(() => const RegistrationScreen(),  transition: tr.Transition.cupertino);}, textColor: kBlackColor, width: 318)
+                  ButtonText(
+                      text: "Зарегистрироваться",
+                      buttonColor: kGreyColor,
+                      press: () {
+                        Get.to(() => const RegistrationScreen(),
+                            transition: tr.Transition.cupertino);
+                      },
+                      textColor: kBlackColor,
+                      width: 318)
                 ]),
               ),
             )
@@ -61,4 +69,3 @@ class BodySignInScreen extends StatelessWidget {
     );
   }
 }
-

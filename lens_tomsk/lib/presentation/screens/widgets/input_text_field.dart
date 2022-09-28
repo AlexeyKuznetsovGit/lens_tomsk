@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:lens_tomsk/presentation/common/constants.dart';
 
-class InputTextField extends StatelessWidget {
+class InputTextField extends StatefulWidget {
   const InputTextField({
     Key? key,
     required TextEditingController controller,
@@ -10,6 +11,8 @@ class InputTextField extends StatelessWidget {
     required this.textInpuType,
     required this.hintText,
     required this.obscureText,
+    this.isAction = false,
+    this.isBlackColorHintText = false,
     this.isEmail = false,
     this.isPassword = false,
     this.isName = false,
@@ -24,7 +27,16 @@ class InputTextField extends StatelessWidget {
   final bool isPassword;
   final bool isName;
   final bool obscureText;
+  final bool isBlackColorHintText;
+  final bool isAction;
 
+  @override
+  State<InputTextField> createState() => _InputTextFieldState();
+}
+
+bool isVisible = false;
+
+class _InputTextFieldState extends State<InputTextField> {
   @override
   Widget build(BuildContext context) {
     return Column(children: [
@@ -34,7 +46,7 @@ class InputTextField extends StatelessWidget {
         margin: EdgeInsets.only(left: 20.w, right: 20.w, bottom: 4.h),
         alignment: Alignment.centerLeft,
         child: Text(
-          title,
+          widget.title,
           style: TextStyle(
             color: kHintTextColor,
             fontFamily: 'Poppins-Regular',
@@ -49,32 +61,67 @@ class InputTextField extends StatelessWidget {
           right: 10.w,
         ),
         child: TextFormField(
-          obscureText: obscureText,
-          keyboardType: textInpuType,
-          controller: _controller,
+          obscureText: widget.obscureText,
+          keyboardType: widget.textInpuType,
+          controller: widget._controller,
           validator: (value) {
             if (value!.isEmpty) {
               return "Пожалуйста введите данные";
             }
-            if (isEmail && !emailValidatorRegExp.hasMatch(value)) {
+            if (widget.isEmail && !emailValidatorRegExp.hasMatch(value)) {
               return "Введены некорректные символы";
             }
-            if (isPassword && value.length < 8) {
+            if (widget.isPassword && value.length < 8) {
               "Пароль слишком короткий";
             }
-            if (isName && !nameValidatorRegExp.hasMatch(value)) {
+            if (widget.isName && nameValidatorRegExp.hasMatch(value)) {
               return "Имя введено некорректно";
             }
           },
           decoration: InputDecoration(
+            suffixIcon: widget.isAction
+                ? !isVisible
+                    ? GestureDetector(
+                          behavior: HitTestBehavior.translucent,
+                      onTap: (){
+                        setState(() {
+                          isVisible = !isVisible;
+                        });
+                      },
+                      child: Padding(
+                        padding: EdgeInsets.only(right: 10.w),
+                        child: SvgPicture.asset(
+                            "assets/icons/eye_see.svg",
+                            height: 5.h,
+                            width: 5.w,
+                          ),
+                      ),
+                    )
+                    : GestureDetector(
+                      behavior: HitTestBehavior.translucent,
+                      onTap: (){
+                        setState(() {
+                          isVisible = !isVisible;
+                        });
+                      },
+                      child: Padding(
+                                       padding: EdgeInsets.only(right: 10.w),
+                        child: SvgPicture.asset(
+                            "assets/icons/eye_not_see.svg",
+                            height: 5.h,
+                            width: 5.w,
+                          ),
+                      ),
+                    )
+                : null,
             isDense: true,
             filled: true,
             fillColor: kBackGroundColor,
-            hintText: hintText,
+            hintText: isVisible ? widget.hintText : "********",
             contentPadding:
                 EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
             hintStyle: TextStyle(
-              color: kHintTextColor,
+              color: widget.isBlackColorHintText ? kBlackColor : kHintTextColor,
               fontFamily: 'Poppins-Regular',
               fontSize: 12.sp,
               fontWeight: FontWeight.w400,
