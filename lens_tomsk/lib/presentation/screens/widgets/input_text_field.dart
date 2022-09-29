@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
+import 'package:lens_tomsk/domain/models/Users.dart';
 import 'package:lens_tomsk/presentation/common/constants.dart';
+import 'package:lens_tomsk/presentation/screens/widgets/buttons/button_add_cart/components/custom_snack_bar.dart';
 
 class InputTextField extends StatefulWidget {
-  const InputTextField({
+   InputTextField({
     Key? key,
     required TextEditingController controller,
     required this.title,
@@ -26,7 +29,7 @@ class InputTextField extends StatefulWidget {
   final bool isEmail;
   final bool isPassword;
   final bool isName;
-  final bool obscureText;
+  bool obscureText;
   final bool isBlackColorHintText;
   final bool isAction;
 
@@ -61,63 +64,72 @@ class _InputTextFieldState extends State<InputTextField> {
           right: 10.w,
         ),
         child: TextFormField(
-          obscureText: widget.obscureText,
+
+          obscureText: widget.obscureText ,
           keyboardType: widget.textInpuType,
           controller: widget._controller,
           validator: (value) {
             if (value!.isEmpty) {
               return "Пожалуйста введите данные";
             }
-            if (widget.isEmail && !emailValidatorRegExp.hasMatch(value)) {
-              return "Введены некорректные символы";
+            if (widget.isEmail) {
+              if (!emailValidatorRegExp.hasMatch(value))
+                return "Введены некорректные символы";
             }
-            if (widget.isPassword && value.length < 8) {
-              "Пароль слишком короткий";
+            if (widget.isPassword) {
+              if (value.length < 8) return "Пароль слишком короткий";
             }
+
             if (widget.isName && nameValidatorRegExp.hasMatch(value)) {
               return "Имя введено некорректно";
             }
           },
+   
+          style: TextStyle(color: kBlackColor),
           decoration: InputDecoration(
             suffixIcon: widget.isAction
                 ? !isVisible
                     ? GestureDetector(
-                          behavior: HitTestBehavior.translucent,
-                      onTap: (){
-                        setState(() {
-                          isVisible = !isVisible;
-                        });
-                      },
-                      child: Padding(
-                        padding: EdgeInsets.only(right: 10.w),
-                        child: SvgPicture.asset(
+                        behavior: HitTestBehavior.translucent,
+                        onTap: () {
+                          setState(() {
+                            isVisible = !isVisible;
+                             widget.obscureText = !widget.obscureText;
+                          });
+                        },
+                        child: Padding(
+                          padding: EdgeInsets.only(right: 10.w),
+                          child: SvgPicture.asset(
                             "assets/icons/eye_see.svg",
                             height: 5.h,
                             width: 5.w,
                           ),
-                      ),
-                    )
+                        ),
+                      )
                     : GestureDetector(
-                      behavior: HitTestBehavior.translucent,
-                      onTap: (){
-                        setState(() {
-                          isVisible = !isVisible;
-                        });
-                      },
-                      child: Padding(
-                                       padding: EdgeInsets.only(right: 10.w),
-                        child: SvgPicture.asset(
+                        behavior: HitTestBehavior.translucent,
+                        onTap: () {
+                          setState(() {
+                             isVisible = !isVisible;
+                            widget.obscureText = !widget.obscureText;
+                          });
+                        },
+                        child: Padding(
+                          padding: EdgeInsets.only(right: 10.w),
+                          child: SvgPicture.asset(
                             "assets/icons/eye_not_see.svg",
                             height: 5.h,
                             width: 5.w,
                           ),
-                      ),
-                    )
+                        ),
+                      )
                 : null,
             isDense: true,
             filled: true,
             fillColor: kBackGroundColor,
-            hintText: isVisible ? widget.hintText : "********",
+            
+             hintText: widget.hintText, 
+            
             contentPadding:
                 EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
             hintStyle: TextStyle(

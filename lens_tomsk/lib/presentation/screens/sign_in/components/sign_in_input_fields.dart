@@ -49,6 +49,7 @@ class _SignInInputFieldsState extends State<SignInInputFields> {
               ),
             ),
             InputTextField(
+            
               isEmail: true,
               controller: _emailField,
               title: 'Ваш e-mail',
@@ -58,7 +59,9 @@ class _SignInInputFieldsState extends State<SignInInputFields> {
             ),
             SizedBox(height: 10.h,),
             InputTextField(
-              isEmail: false,
+              isAction: true,
+          
+              isPassword: true,
               controller: _passwordField,
               title: 'Ваш пароль',
                obscureText: true,

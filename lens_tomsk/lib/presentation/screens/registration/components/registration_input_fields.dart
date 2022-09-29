@@ -51,6 +51,7 @@ class _RegistrationInputFieldsState extends State<RegistrationInputFields> {
               ),
             ),
             InputTextField(
+            
               isName: true,
               controller: _nameField,
               title: 'Имя',
@@ -62,6 +63,7 @@ class _RegistrationInputFieldsState extends State<RegistrationInputFields> {
               height: 10.h,
             ),
             InputTextField(
+             
               isEmail: true,
               controller: _emailField,
               title: 'Ваш e-mail',
@@ -73,6 +75,7 @@ class _RegistrationInputFieldsState extends State<RegistrationInputFields> {
               height: 10.h,
             ),
             InputTextField(
+         
                 isPassword: true,
                 controller: _passwordField,
                 title: 'Ваш пароль',

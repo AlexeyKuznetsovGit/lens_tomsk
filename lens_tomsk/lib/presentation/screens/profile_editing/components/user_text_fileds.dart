@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:lens_tomsk/presentation/common/constants.dart';
 import 'package:lens_tomsk/presentation/screens/widgets/buttons/button_text.dart';
 import 'package:lens_tomsk/presentation/screens/widgets/input_text_field.dart';
+import 'package:lens_tomsk/presentation/screens/widgets/phone_text_field.dart';
 
 class UserTextFields extends StatefulWidget {
   const UserTextFields(
@@ -23,6 +24,10 @@ class UserTextFields extends StatefulWidget {
 final _nameField = TextEditingController();
 final _emailField = TextEditingController();
 final _passwordField = TextEditingController();
+final _phoneField = TextEditingController();
+
+final _cityField = TextEditingController();
+final _adresslField = TextEditingController();
 final _formKey = GlobalKey<FormState>();
 
 class _UserTextFieldsState extends State<UserTextFields> {
@@ -42,6 +47,7 @@ class _UserTextFieldsState extends State<UserTextFields> {
                 height: 20.h,
               ),
               InputTextField(
+            
                   isName: true,
                   controller: _nameField,
                   title: 'Имя',
@@ -53,6 +59,7 @@ class _UserTextFieldsState extends State<UserTextFields> {
                 height: 10.h,
               ),
               InputTextField(
+           
                   isEmail: true,
                   controller: _emailField,
                   title: 'E-mail',
@@ -64,6 +71,7 @@ class _UserTextFieldsState extends State<UserTextFields> {
                 height: 10.h,
               ),
               InputTextField(
+         
                   isAction: true,
                   isPassword: true,
                   controller: _passwordField,
@@ -72,6 +80,32 @@ class _UserTextFieldsState extends State<UserTextFields> {
                   hintText: widget.password,
                   isBlackColorHintText: true,
                   obscureText: true),
+              SizedBox(
+                height: 10.h,
+              ),
+              InputTextField(
+         isName: true,
+                  controller: _cityField,
+                  title: 'Город',
+                  textInpuType: TextInputType.text,
+                  hintText: 'Томск',
+                  isBlackColorHintText: true,
+                  obscureText: false),
+              SizedBox(
+                height: 10.h,
+              ),
+               InputTextField(
+         isName: true,
+                  controller: _adresslField,
+                  title: 'Адрес',
+                  textInpuType: TextInputType.text,
+                  hintText: 'ул. Ленина, 74',
+                  isBlackColorHintText: true,
+                  obscureText: false),
+              SizedBox(
+                height: 10.h,
+              ),
+              PhoneTextField(title: "Телефон", hint: '(000) 000-0000', controller: _phoneField,),
               SizedBox(
                 height: 20.h,
               ),

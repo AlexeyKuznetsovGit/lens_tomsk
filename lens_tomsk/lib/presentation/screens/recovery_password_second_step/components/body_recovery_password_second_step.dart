@@ -55,6 +55,7 @@ final _againNewPasswordField = TextEditingController();
               ),
             ),
             InputTextField(
+        
               isName: true, //временно
               controller: _confirmationField,
               title: 'Код подтверждения',
@@ -64,6 +65,7 @@ final _againNewPasswordField = TextEditingController();
             ),
             SizedBox(height: 10.h,),
              InputTextField(
+            
              isPassword: true,
               controller: _newPasswordField,
               title: 'Новый пароль',
@@ -73,6 +75,7 @@ final _againNewPasswordField = TextEditingController();
             ),
              SizedBox(height: 10.h,),
              InputTextField(
+               
              isPassword: true,
               controller: _againNewPasswordField,
               title: 'Повторите новый пароль',

@@ -59,6 +59,7 @@ class _BodyRecoveryPasswordFirstStepState
                         ),
                       ),
                       InputTextField(
+                       
                         isEmail: true,
                         controller: _emailField,
                         title: 'Ваш e-mail',
