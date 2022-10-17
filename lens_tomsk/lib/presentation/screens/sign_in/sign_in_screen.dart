@@ -6,7 +6,6 @@ import 'package:lens_tomsk/presentation/screens/widgets/bottom_nav_bar.dart';
 
 class SignInScreen extends StatelessWidget {
   const SignInScreen({ Key? key }) : super(key: key);
-  static String routeName = "/sign_in";
 
   @override
   Widget build(BuildContext context) {
