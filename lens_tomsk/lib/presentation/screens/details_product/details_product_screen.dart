@@ -15,7 +15,7 @@ class DetailsProductScreen extends StatelessWidget {
       backgroundColor: kBackGroundColor,
       body: BodyDetailsProduct(product: product),
       bottomNavigationBar: BottomNavBar(
-        selectedMenu: MenuState.noState,
+        selectedMenu: MenuState.home,
       ),
     );
   }

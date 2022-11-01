@@ -20,39 +20,29 @@ void showBuyDialog(BuildContext context, Product product) => showDialog(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10),
         ),
-        child: Container(
-          height: 267.h,
+        child: SizedBox(
+          width: 338.w,
           child: Column(
+            mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Container(
-                  alignment: Alignment.centerRight,
-                  child: Container(
-                    margin:
-                        EdgeInsets.only(top: 18.h, bottom: 18.h, right: 10.w),
-                    height: 20.h,
-                    width: 213.w,
-                    child: Row(children: [
-                      Container(
-                        alignment: Alignment.center,
-                        height: 16.h,
-                        width: 109.w,
-                        child: Text(
+              SizedBox(height: 16.h,),
+              Stack(
+                alignment: Alignment.centerRight,
+                children: [
+                   ButtonCloseWindow(),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
                           'Доступные опции',
-                          style: TextStyle(
-                            color: kBlackColor,
-                            fontFamily: 'OpenSans-Regular',
-                            fontSize: 12.sp,
-                            fontWeight: FontWeight.w600,
-                          ),
+                          style:openSansSemiBold12
                         ),
-                      ),
-                      SizedBox(
-                        width: 84.w,
-                      ),
-                      ButtonCloseWindow(),
-                    ]),
-                  )),
+                    ],
+                  ),
+                ],
+              ),
+               SizedBox(height: 16.h,),
               GestureDetector(
                   onTap: () {},
                   child: Container(
@@ -159,6 +149,7 @@ void showBuyDialog(BuildContext context, Product product) => showDialog(
                             kGreenSnackBar.withOpacity(0.8),
                             'Товар был успешно добавлен в корзину')
                       }),
+                       SizedBox(height: 20.h,),
             ],
           ),
         ),

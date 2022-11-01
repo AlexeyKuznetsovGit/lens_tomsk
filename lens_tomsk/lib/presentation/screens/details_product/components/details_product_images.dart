@@ -19,7 +19,7 @@ class _DetailsProductImagesState extends State<DetailsProductImages> {
     return Padding(
       padding: EdgeInsets.fromLTRB(
           11.w,
-         20.h,
+         10.h,
           11.w,
           10.h),
       child: Container(

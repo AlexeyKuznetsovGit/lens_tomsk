@@ -26,19 +26,21 @@ class BodyHome extends StatelessWidget {
           ));
         }
         if (state is HomeScreenLoadedState) {
-          return SingleChildScrollView(
-            child: Column(
-              children: [
-                Padding(
-                  padding: EdgeInsets.fromLTRB(11.w, 20.h, 11.w, 20.h),
-                  child: Header(
-                    width: 338,
-                    text: 'Поиск по названию...',
-                  ),
+          return Column(
+            children: [
+              Padding(
+                padding: EdgeInsets.only(left:11.w, top: 20.h, right: 11.w, bottom: 10.h),
+                child: Header(
+                  width: 338,
+                  text: 'Поиск по названию...',
                 ),
-                ProductLists(),
-              ],
-            ),
+              ),
+              Expanded(
+                child: SingleChildScrollView(
+                  child: ProductLists(),
+                ),
+              ),
+            ],
           );
         }
         if (state is HomeScreenErrorState) {
@@ -50,4 +52,4 @@ class BodyHome extends StatelessWidget {
       }),
     );
   }
-} 
+}

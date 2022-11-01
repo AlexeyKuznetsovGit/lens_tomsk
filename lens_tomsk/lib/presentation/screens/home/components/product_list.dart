@@ -18,6 +18,7 @@ class ProductLists extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        SizedBox(height: 10.h,),
         Text(
           "Товары со скидкой",
           style: poppinsBold16,

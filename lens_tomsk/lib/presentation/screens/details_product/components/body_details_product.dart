@@ -15,10 +15,9 @@ class BodyDetailsProduct extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: SingleChildScrollView(
-        child: Column(
-          children: [
-            Row(
+      child: Column(
+        children: [
+          Row(
             children: [
               Padding(
                 padding: EdgeInsets.only(left: 11.w, top: 20.h, right: 10.w),
@@ -33,15 +32,22 @@ class BodyDetailsProduct extends StatelessWidget {
               ),
             ],
           ),
-            DetailsProductImages(product: product),
-            DetailsTitlePriceButtons(product: product),
-            DetailsSpecifications(product: product),
-            DetailsDescription(product: product),
-            SizedBox(
-              height: 20.h,
-            )
-          ],
-        ),
+          SizedBox(
+            height: 10.h,
+          ),
+          Expanded(
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  DetailsProductImages(product: product),
+                  DetailsTitlePriceButtons(product: product),
+                  DetailsSpecifications(product: product),
+                  DetailsDescription(product: product),
+                ],
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
