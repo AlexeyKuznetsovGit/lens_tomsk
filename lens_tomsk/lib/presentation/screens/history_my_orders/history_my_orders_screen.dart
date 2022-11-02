@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:lens_tomsk/presentation/common/constants.dart';
-import 'package:lens_tomsk/presentation/common/enums.dart';
 import 'package:lens_tomsk/presentation/screens/catalog/catalog_screen.dart';
-import 'package:lens_tomsk/presentation/screens/widgets/bottom_nav_bar.dart';
 import 'package:lens_tomsk/presentation/screens/widgets/buttons/button_back.dart';
 import 'package:lens_tomsk/presentation/screens/widgets/section_description.dart';
 import 'package:lens_tomsk/presentation/screens/widgets/section_title.dart';
@@ -139,9 +137,7 @@ class HistoryMyOrdersScreen extends StatelessWidget {
           ),
         ]),
       ),
-      bottomNavigationBar: BottomNavBar(
-        selectedMenu: MenuState.profile,
-      ),
+      
     );
   }
 }

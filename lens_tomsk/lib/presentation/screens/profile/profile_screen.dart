@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lens_tomsk/presentation/common/constants.dart';
-import 'package:lens_tomsk/presentation/common/enums.dart';
 import 'package:lens_tomsk/presentation/screens/profile/components/body.dart';
-import 'package:lens_tomsk/presentation/screens/widgets/bottom_nav_bar.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({Key? key,required this.name, required this.email, required this.password}) : super(key: key);
@@ -14,9 +12,7 @@ class ProfileScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: kBackGroundColor,
       body: Body(name: name, email: email, password: password,),
-       bottomNavigationBar: BottomNavBar(
-        selectedMenu: MenuState.profile,
-      ), 
+        
     );
   }
 }

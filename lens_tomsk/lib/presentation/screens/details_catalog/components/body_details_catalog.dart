@@ -11,9 +11,9 @@ import 'package:lens_tomsk/presentation/screens/widgets/product_card/product_car
 import 'package:get/get_navigation/src/routes/transitions_type.dart' as tr;
 
 class BodyDetailsCatalog extends StatelessWidget {
-  const BodyDetailsCatalog({Key? key, required this.category_name})
+  const BodyDetailsCatalog({Key? key, required this.categoryName})
       : super(key: key);
-  final String category_name;
+  final String categoryName;
 
   @override
   Widget build(BuildContext context) {

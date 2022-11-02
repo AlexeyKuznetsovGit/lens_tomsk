@@ -14,8 +14,8 @@ class CategoryProductList extends StatelessWidget {
         children: List.generate(
           categories.length,
           (int index) => CategoryProductCard(
-            category_name: categories[index].nameCategory,
-            category_product: categories[index],
+            categoryName: categories[index].nameCategory,
+            categoryProduct: categories[index],
           ),
         ),
       ),

@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'presentation/screens/ordering_screen/ordering_screen.dart';
+import 'presentation/screens/widgets/bottom_nav_bar/bottom_nav_bar.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -32,7 +33,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         home: child,
       ),
-      child: OrderingScreen(),
+      child: MainScreen(),
     );
   }
 }
