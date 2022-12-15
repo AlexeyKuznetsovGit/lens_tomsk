@@ -4,7 +4,7 @@ import 'package:lens_tomsk/domain/models/Product.dart';
 import 'package:lens_tomsk/presentation/screens/home/cubit/home_screen_state.dart';
 
 class HomeScreenCubit extends Cubit<HomeScreenState> {
-  HomeScreenCubit() : super(HomeScreenLoadingState());
+  HomeScreenCubit() : super(HomeScreenLoadedState());
 
   /* Future<void> getProducts() async {
     try {

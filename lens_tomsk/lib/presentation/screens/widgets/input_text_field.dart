@@ -7,9 +7,9 @@ import 'package:lens_tomsk/presentation/common/constants.dart';
 import 'package:lens_tomsk/presentation/screens/widgets/buttons/button_add_cart/components/custom_snack_bar.dart';
 
 class InputTextField extends StatefulWidget {
-   InputTextField({
+  InputTextField({
     Key? key,
-    required TextEditingController controller,
+    required this.controller,
     required this.title,
     required this.textInpuType,
     required this.hintText,
@@ -19,10 +19,8 @@ class InputTextField extends StatefulWidget {
     this.isEmail = false,
     this.isPassword = false,
     this.isName = false,
-  })  : _controller = controller,
-        super(key: key);
-
-  final TextEditingController _controller;
+  }) : super(key: key);
+  TextEditingController controller;
   final String title;
   final TextInputType textInpuType;
   final String hintText;
@@ -37,9 +35,19 @@ class InputTextField extends StatefulWidget {
   State<InputTextField> createState() => _InputTextFieldState();
 }
 
-bool isVisible = false;
+late bool isVisible;
 
 class _InputTextFieldState extends State<InputTextField> {
+  @override
+  void initState() {
+    super.initState();
+    isVisible = false;
+    widget.controller = TextEditingController(text: widget.hintText);
+    widget.controller.selection = TextSelection.fromPosition(
+        TextPosition(offset: widget.controller.text.length));
+    print(widget.controller.selection);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(children: [
@@ -64,10 +72,14 @@ class _InputTextFieldState extends State<InputTextField> {
           right: 10.w,
         ),
         child: TextFormField(
-
-          obscureText: widget.obscureText ,
+          obscureText: widget.isPassword ? !isVisible : false,
           keyboardType: widget.textInpuType,
-          controller: widget._controller,
+          controller: widget.controller,
+          onChanged: (text) => {
+            widget.controller.text = text,
+            widget.controller.selection = TextSelection.fromPosition(
+                TextPosition(offset: widget.controller.text.length)),
+          },
           validator: (value) {
             if (value!.isEmpty) {
               return "Пожалуйста введите данные";
@@ -84,52 +96,31 @@ class _InputTextFieldState extends State<InputTextField> {
               return "Имя введено некорректно";
             }
           },
-   
           style: TextStyle(color: kBlackColor),
           decoration: InputDecoration(
             suffixIcon: widget.isAction
-                ? !isVisible
-                    ? GestureDetector(
-                        behavior: HitTestBehavior.translucent,
-                        onTap: () {
-                          setState(() {
-                            isVisible = !isVisible;
-                             widget.obscureText = !widget.obscureText;
-                          });
-                        },
-                        child: Padding(
-                          padding: EdgeInsets.only(right: 10.w),
-                          child: SvgPicture.asset(
-                            "assets/icons/eye_see.svg",
-                            height: 5.h,
-                            width: 5.w,
-                          ),
-                        ),
-                      )
-                    : GestureDetector(
-                        behavior: HitTestBehavior.translucent,
-                        onTap: () {
-                          setState(() {
-                             isVisible = !isVisible;
-                            widget.obscureText = !widget.obscureText;
-                          });
-                        },
-                        child: Padding(
-                          padding: EdgeInsets.only(right: 10.w),
-                          child: SvgPicture.asset(
-                            "assets/icons/eye_not_see.svg",
-                            height: 5.h,
-                            width: 5.w,
-                          ),
-                        ),
-                      )
+                ? GestureDetector(
+                    behavior: HitTestBehavior.translucent,
+                    onTap: () {
+                      setState(() {
+                        isVisible = !isVisible;
+                      });
+                    },
+                    child: Padding(
+                      padding: EdgeInsets.only(right: 10.w),
+                      child: SvgPicture.asset(
+                        isVisible
+                            ? "assets/icons/eye_see.svg"
+                            : "assets/icons/eye_not_see.svg",
+                        height: 5.h,
+                        width: 5.w,
+                      ),
+                    ),
+                  )
                 : null,
             isDense: true,
             filled: true,
             fillColor: kBackGroundColor,
-            
-             hintText: widget.hintText, 
-            
             contentPadding:
                 EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
             hintStyle: TextStyle(

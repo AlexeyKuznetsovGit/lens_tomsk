@@ -53,7 +53,7 @@ class DetailsButtonCart extends StatelessWidget {
         if (state is NotAddState) {
           return GestureDetector(
             onTap: () {
-              showBuyDialog(context, product);
+              showBuyDialog(context,product);
               /* BlocProvider.of<ButtonAddCartCubit>(context)
                   .makeFavourite(product); */
             },

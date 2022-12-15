@@ -9,7 +9,12 @@ import 'package:lens_tomsk/presentation/screens/widgets/section_title.dart';
 import 'package:get/get_navigation/src/routes/transitions_type.dart' as tr;
 
 class Body extends StatelessWidget {
-  const Body({Key? key, required this.name, required this.email, required this.password}) : super(key: key);
+  const Body(
+      {Key? key,
+      required this.name,
+      required this.email,
+      required this.password})
+      : super(key: key);
   final String name;
   final String email;
   final String password;
@@ -48,21 +53,22 @@ class Body extends StatelessWidget {
                     padding: EdgeInsets.only(left: 281.w, top: 25.h),
                     child: GestureDetector(
                       onTap: () => {
-                        Get.to(ProfileEditing(name: name, email: email, password: password), transition: tr.Transition.cupertino)
+                        Get.to(
+                            () => ProfileEditing(
+                                name: name, email: email, password: password),
+                            transition: tr.Transition.cupertino)
                       },
                       child: Container(
                           alignment: Alignment.center,
-                           width: 37.w,
-                          height: 37.h, 
+                          width: 37.w,
+                          height: 37.h,
                           //padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 10.w),
                           decoration: BoxDecoration(
                             color: kBackGroundColor,
                             borderRadius: BorderRadius.circular(10),
                           ),
                           child: SvgPicture.asset(
-                            
                             "assets/icons/pencil.svg",
-                            
                             width: 17.w,
                             height: 17.h,
                           )),

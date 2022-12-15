@@ -12,15 +12,21 @@ class ProfileEditing extends StatelessWidget {
   final String name;
   final String email;
   final String password;
-  
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: kBackGroundColor,
-      body: UserTextFields(name: name, email: email, password: password,),
-      
+    return GestureDetector(
+      onTap: () {
+        FocusScope.of(context).unfocus();
+      },
+      child: Scaffold(
+        backgroundColor: kBackGroundColor,
+        body: UserTextFields(
+          name: name,
+          email: email,
+          password: password,
+        ),
+      ),
     );
   }
 }
-

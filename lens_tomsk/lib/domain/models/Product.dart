@@ -1,11 +1,14 @@
 class Product {
   final String title, description, category;
   final List<String> images, specificationsName, specificationsInfo;
-  final int price, oldPrice;
-  bool isRecommended, isDiscounted;
+  final int price, oldPrice, count;
+  final Map<String, List<String>>? options;
+  final bool isRecommended, isDiscounted;
 
   Product({
+    this.options,
     required this.images,
+    required this.count,
     required this.description,
     required this.title,
     required this.category,
@@ -20,6 +23,44 @@ class Product {
 
 List<Product> products = [
   Product(
+    options: {
+      "Базовая кривизна": ['8.4', '8.8'],
+      'Оптическая сила': [
+        '+8',
+        '+7.5',
+        '+7',
+        '+6.5',
+        '+6',
+        '+5.5',
+        '+5',
+        '+4.5',
+        '+4',
+        '+3.5',
+        '+3',
+        '+2.5',
+        '+2',
+        '+1.5',
+        '+1',
+        '+0.5',
+        '-0.5',
+        '-1',
+        '-1.5',
+        '-2',
+        '-2.5',
+        '-3',
+        '-3.5',
+        '-4',
+        '-4.5',
+        '-5',
+        '-5.5',
+        '-6',
+        '-6.5',
+        '-7',
+        '-7.5',
+        '-8'
+      ],
+    },
+    count: 4,
     images: ["assets/images/product_1.png", "assets/images/product_1-1.png"],
     description:
         "AOSEPT® plus HydraGlyde® обеспечивает эффективную очистку и надежную дезинфекцию контактных линз. За счет матрицы HydraGlyde®, которая способствует длительному увлажнению, в линзах комфортно в течении всего дня. Не содержит консервантов! Подходит для чувствительных глаз!",
@@ -37,6 +78,7 @@ List<Product> products = [
     specificationsInfo: ["Johnson&Johnson", "На складе", "147"],
   ),
   Product(
+    count: 10,
     images: ["assets/images/product_2.png"],
     description:
         "AOSEPT® plus HydraGlyde® обеспечивает эффективную очистку и надежную дезинфекцию контактных линз. За счет матрицы HydraGlyde®, которая способствует длительному увлажнению, в линзах комфортно в течении всего дня. Не содержит консервантов! Подходит для чувствительных глаз!",
@@ -50,6 +92,44 @@ List<Product> products = [
     specificationsInfo: ["Alcon - Ciba Vision"],
   ),
   Product(
+    options: {
+      "Базовая кривизна": ['8.4', '8.8'],
+      'Оптическая сила': [
+        '+8',
+        '+7.5',
+        '+7',
+        '+6.5',
+        '+6',
+        '+5.5',
+        '+5',
+        '+4.5',
+        '+4',
+        '+3.5',
+        '+3',
+        '+2.5',
+        '+2',
+        '+1.5',
+        '+1',
+        '+0.5',
+        '-0.5',
+        '-1',
+        '-1.5',
+        '-2',
+        '-2.5',
+        '-3',
+        '-3.5',
+        '-4',
+        '-4.5',
+        '-5',
+        '-5.5',
+        '-6',
+        '-6.5',
+        '-7',
+        '-7.5',
+        '-8'
+      ],
+    },
+    count: 1,
     images: ["assets/images/product_3.png"],
     description:
         "AOSEPT® plus HydraGlyde® обеспечивает эффективную очистку и надежную дезинфекцию контактных линз. За счет матрицы HydraGlyde®, которая способствует длительному увлажнению, в линзах комфортно в течении всего дня. Не содержит консервантов! Подходит для чувствительных глаз!",
@@ -63,6 +143,44 @@ List<Product> products = [
     specificationsInfo: ["Alcon - Ciba Vision"],
   ),
   Product(
+    options: {
+      "Базовая кривизна": ['8.4', '8.8'],
+      'Оптическая сила': [
+        '+8',
+        '+7.5',
+        '+7',
+        '+6.5',
+        '+6',
+        '+5.5',
+        '+5',
+        '+4.5',
+        '+4',
+        '+3.5',
+        '+3',
+        '+2.5',
+        '+2',
+        '+1.5',
+        '+1',
+        '+0.5',
+        '-0.5',
+        '-1',
+        '-1.5',
+        '-2',
+        '-2.5',
+        '-3',
+        '-3.5',
+        '-4',
+        '-4.5',
+        '-5',
+        '-5.5',
+        '-6',
+        '-6.5',
+        '-7',
+        '-7.5',
+        '-8'
+      ],
+    },
+    count: 0,
     images: ["assets/images/product_4.png"],
     description:
         "AOSEPT® plus HydraGlyde® обеспечивает эффективную очистку и надежную дезинфекцию контактных линз. За счет матрицы HydraGlyde®, которая способствует длительному увлажнению, в линзах комфортно в течении всего дня. Не содержит консервантов! Подходит для чувствительных глаз!",
@@ -76,6 +194,44 @@ List<Product> products = [
     specificationsInfo: ["Alcon - Ciba Vision"],
   ),
   Product(
+    options: {
+      "Базовая кривизна": ['8.4', '8.8'],
+      'Оптическая сила': [
+        '+8',
+        '+7.5',
+        '+7',
+        '+6.5',
+        '+6',
+        '+5.5',
+        '+5',
+        '+4.5',
+        '+4',
+        '+3.5',
+        '+3',
+        '+2.5',
+        '+2',
+        '+1.5',
+        '+1',
+        '+0.5',
+        '-0.5',
+        '-1',
+        '-1.5',
+        '-2',
+        '-2.5',
+        '-3',
+        '-3.5',
+        '-4',
+        '-4.5',
+        '-5',
+        '-5.5',
+        '-6',
+        '-6.5',
+        '-7',
+        '-7.5',
+        '-8'
+      ],
+    },
+    count: 11,
     images: ["assets/images/product_5.png"],
     description:
         "AOSEPT® plus HydraGlyde® обеспечивает эффективную очистку и надежную дезинфекцию контактных линз. За счет матрицы HydraGlyde®, которая способствует длительному увлажнению, в линзах комфортно в течении всего дня. Не содержит консервантов! Подходит для чувствительных глаз!",
@@ -89,6 +245,7 @@ List<Product> products = [
     specificationsInfo: ["Alcon - Ciba Vision"],
   ),
   Product(
+    count: 3,
     images: ["assets/images/product_6.png"],
     description:
         "AOSEPT® plus HydraGlyde® обеспечивает эффективную очистку и надежную дезинфекцию контактных линз. За счет матрицы HydraGlyde®, которая способствует длительному увлажнению, в линзах комфортно в течении всего дня. Не содержит консервантов! Подходит для чувствительных глаз!",
@@ -102,3 +259,16 @@ List<Product> products = [
     specificationsInfo: ["Alcon - Ciba Vision"],
   ),
 ];
+
+
+class Options {
+  String name;
+  List<String> parameters;
+
+  Options(this.name, this.parameters);
+
+  @override
+  String toString() {
+    return '{ ${this.name}, ${this.parameters} }';
+  }
+}

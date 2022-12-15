@@ -7,9 +7,16 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        backgroundColor: kBackGroundColor,
-        body: BodyHome(),
-        );
+    return GestureDetector(
+      onTap: () {
+        FocusScope.of(context).unfocus();
+      },
+      child: SafeArea(
+        child: Scaffold(
+          backgroundColor: kBackGroundColor,
+          body: BodyHome(),
+        ),
+      ),
+    );
   }
 }

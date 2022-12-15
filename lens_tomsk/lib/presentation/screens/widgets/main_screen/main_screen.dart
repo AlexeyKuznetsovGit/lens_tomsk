@@ -10,7 +10,7 @@ import 'package:lens_tomsk/presentation/screens/favourite/favourite_screen_provi
 import 'package:lens_tomsk/presentation/screens/home/home_screen_provider.dart';
 import 'package:lens_tomsk/presentation/screens/profile/profile_screen.dart';
 import 'package:lens_tomsk/presentation/screens/sign_in/sign_in_screen.dart';
-import 'package:lens_tomsk/presentation/screens/widgets/bottom_nav_bar/controller/bottom_nav_bar_controller.dart';
+import 'package:lens_tomsk/presentation/screens/widgets/main_screen/controller/main_screen_controller.dart';
 
 class MainScreen extends StatefulWidget {
   MainScreen({
@@ -22,8 +22,8 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-  NavigationController controller =
-      Get.put(NavigationController(), tag: 'menu');
+  MainScreenController controller =
+      Get.put(MainScreenController(), tag: 'menu');
   bool isAuth = true;
 
   @override

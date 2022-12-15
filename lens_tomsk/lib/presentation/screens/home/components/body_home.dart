@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -15,41 +17,39 @@ class BodyHome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: BlocBuilder<HomeScreenCubit, HomeScreenState>(
-          builder: (context, state) {
-        if (state is HomeScreenLoadingState) {
-          BlocProvider.of<HomeScreenCubit>(context).getProducts();
-          return Center(
-              child: CircularProgressIndicator(
-            color: kBlueColor,
-          ));
-        }
-        if (state is HomeScreenLoadedState) {
-          return Column(
-            children: [
-              Padding(
-                padding: EdgeInsets.only(left:11.w, top: 20.h, right: 11.w, bottom: 10.h),
-                child: Header(
-                  width: 338,
-                  text: 'Поиск по названию...',
-                ),
+    return BlocBuilder<HomeScreenCubit, HomeScreenState>(
+        builder: (context, state) {
+      if (state is HomeScreenLoadingState) {
+       /*  BlocProvider.of<HomeScreenCubit>(context).getProducts(); */
+        return Center(
+            child: CircularProgressIndicator(
+          color: kBlueColor,
+        ));
+      }
+      if (state is HomeScreenLoadedState) {
+        return Column(
+          children: [           
+             Padding(
+              padding: EdgeInsets.only(left:11.w, top: 20.h, right: 11.w, bottom: 10.h),
+              child: Header(
+                width: 338,
+                text: 'Поиск по названию...',
               ),
-              Expanded(
-                child: SingleChildScrollView(
-                  child: ProductLists(),
-                ),
+            ),
+            Expanded(
+              child: SingleChildScrollView(
+                child: ProductLists(),
               ),
-            ],
-          );
-        }
-        if (state is HomeScreenErrorState) {
-          return Center(
-            child: Text(state.errorMsg),
-          );
-        }
-        return Container();
-      }),
-    );
+            ),
+          ],
+        );
+      }
+      if (state is HomeScreenErrorState) {
+        return Center(
+          child: Text(state.errorMsg),
+        );
+      }
+      return Container();
+    });
   }
 }
