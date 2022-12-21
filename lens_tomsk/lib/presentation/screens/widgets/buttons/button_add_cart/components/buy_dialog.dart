@@ -6,9 +6,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:lens_tomsk/domain/models/Product.dart';
 import 'package:lens_tomsk/presentation/common/constants.dart';
-import 'package:lens_tomsk/presentation/screens/widgets/buttons/button_add_cart/components/custom_snack_bar.dart';
 import 'package:lens_tomsk/presentation/screens/widgets/buttons/button_add_cart/components/option_button.dart';
-import 'package:lens_tomsk/presentation/screens/widgets/buttons/button_add_cart/controllers/button_add_controller.dart';
 import 'package:lens_tomsk/presentation/screens/widgets/buttons/button_add_cart/cubit/button_add_cart_cubit.dart';
 import 'package:lens_tomsk/presentation/screens/widgets/buttons/button_close_window.dart';
 import 'package:lens_tomsk/presentation/screens/widgets/section_title.dart';
@@ -43,8 +41,8 @@ class _showBuyDialogWidgetState extends State<showBuyDialogWidget> {
     super.initState();
   }
 
-  SelectOption selectedOption = SelectOption();
-  ButtonAddController controller = Get.put(ButtonAddController(), tag: "ctrl");
+  String firstParameter = '';
+  String secondParameter = '';
   List<Options> productOptions = [];
   bool openOptions = false;
   int count = 1;
@@ -99,10 +97,21 @@ class _showBuyDialogWidgetState extends State<showBuyDialogWidget> {
                             child: Padding(
                               padding: EdgeInsets.only(bottom: 10.h),
                               child: OptionButton(
-                                optionName: productOptions[indexName].name == selectedOption.name.value
-                                    ? "${productOptions[indexName].name}: ${controller.selectedOptions[indexName].parameter.value}"
-                                    : productOptions[indexName].name,
-                              ),
+                                  style: TextStyle(
+                                    color: indexName == 0
+                                        ? firstParameter.isEmpty
+                                            ? kHintTextColor
+                                            : kBlackColor
+                                        : secondParameter.isEmpty
+                                            ? kHintTextColor
+                                            : kBlackColor,
+                                    fontFamily: 'Poppins-Regular',
+                                    fontSize: 12.sp,
+                                    fontWeight: FontWeight.w400,
+                                  ),
+                                  optionName: indexName == 0
+                                      ? "${productOptions[indexName].name} ${firstParameter}"
+                                      : "${productOptions[indexName].name} ${secondParameter}"),
                             ),
                           );
                         },
@@ -120,13 +129,15 @@ class _showBuyDialogWidgetState extends State<showBuyDialogWidget> {
                                     (indexParameters) => GestureDetector(
                                       onTap: () {
                                         setState(() {
-                                          selectedOption.name.value =
-                                              productOptions[indexName].name;
-                                          selectedOption.parameter.value =
-                                              productOptions[indexName]
-                                                  .parameters[indexParameters];
-                                          controller.selectedOptions
-                                              .add(selectedOption);
+                                          if (indexName == 0) {
+                                            firstParameter = productOptions[
+                                                    indexName]
+                                                .parameters[indexParameters];
+                                          } else {
+                                            secondParameter = productOptions[
+                                                    indexName]
+                                                .parameters[indexParameters];
+                                          }
                                         });
                                       },
                                       behavior: HitTestBehavior.translucent,
@@ -144,13 +155,19 @@ class _showBuyDialogWidgetState extends State<showBuyDialogWidget> {
                                           productOptions[indexName]
                                               .parameters[indexParameters],
                                           style: poppinsRegular12.copyWith(
-                                              color: selectedOption
-                                                          .parameter.value ==
-                                                      productOptions[indexName]
-                                                              .parameters[
-                                                          indexParameters]
-                                                  ? kBlackColor
-                                                  : kHintTextColor),
+                                              color: indexName == 0
+                                                  ? productOptions[indexName]
+                                                                  .parameters[
+                                                              indexParameters] ==
+                                                          firstParameter
+                                                      ? kBlackColor
+                                                      : kHintTextColor
+                                                  : productOptions[indexName]
+                                                                  .parameters[
+                                                              indexParameters] ==
+                                                          secondParameter
+                                                      ? kBlackColor
+                                                      : kHintTextColor),
                                         ),
                                       ),
                                     ),
@@ -235,25 +252,40 @@ class _showBuyDialogWidgetState extends State<showBuyDialogWidget> {
                       width: 318.w,
                       height: 38.h,
                       decoration: BoxDecoration(
-                        color: kBlueColor,
+                        color: widget.product.count == 0 ||
+                                firstParameter.isEmpty ||
+                                secondParameter.isEmpty
+                            ? kGreyColor
+                            : kBlueColor,
                         borderRadius: BorderRadius.circular(10),
                       ),
                       child: Center(
                           child: Text(
                         "Добавить товар в корзину",
                         style: TextStyle(
-                            color: kWhiteColor,
+                            color: widget.product.count == 0 ||
+                                    firstParameter.isEmpty ||
+                                    secondParameter.isEmpty
+                                ? kBlackColor
+                                : kWhiteColor,
                             fontFamily: 'OpenSans-Regular',
                             fontSize: 12.sp,
                             fontWeight: FontWeight.w600),
                       )),
                     ),
-                    onTap: () => {
-                          BlocProvider.of<ButtonAddCartCubit>(widget.context)
-                              .addToCart(widget.product),
-                          Get.back(),
-                          //AddCartSnackBar()
-                        }),
+                    onTap: widget.product.count == 0 ||
+                            firstParameter.isEmpty ||
+                            secondParameter.isEmpty
+                        ? () {
+                            //AddCartSnackBar()
+                          }
+                        : () {
+                            widget.product.selectOptions![0] = firstParameter;
+                            widget.product.selectOptions![1] = secondParameter;
+                            BlocProvider.of<ButtonAddCartCubit>(widget.context)
+                                .addToCart(widget.product);
+                            Get.back();
+                          }),
                 SizedBox(
                   height: 20.h,
                 ),

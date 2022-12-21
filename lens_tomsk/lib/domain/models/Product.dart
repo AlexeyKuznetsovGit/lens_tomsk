@@ -4,8 +4,10 @@ class Product {
   final int price, oldPrice, count;
   final Map<String, List<String>>? options;
   final bool isRecommended, isDiscounted;
+  final List<String>? selectOptions;
 
   Product({
+    this.selectOptions,
     this.options,
     required this.images,
     required this.count,
@@ -23,6 +25,7 @@ class Product {
 
 List<Product> products = [
   Product(
+    selectOptions: ['', ''],
     options: {
       "Базовая кривизна": ['8.4', '8.8'],
       'Оптическая сила': [
@@ -92,6 +95,7 @@ List<Product> products = [
     specificationsInfo: ["Alcon - Ciba Vision"],
   ),
   Product(
+    selectOptions: ['', ''],
     options: {
       "Базовая кривизна": ['8.4', '8.8'],
       'Оптическая сила': [
@@ -143,6 +147,7 @@ List<Product> products = [
     specificationsInfo: ["Alcon - Ciba Vision"],
   ),
   Product(
+    selectOptions: ['', ''],
     options: {
       "Базовая кривизна": ['8.4', '8.8'],
       'Оптическая сила': [
@@ -194,6 +199,7 @@ List<Product> products = [
     specificationsInfo: ["Alcon - Ciba Vision"],
   ),
   Product(
+    selectOptions: ['', ''],
     options: {
       "Базовая кривизна": ['8.4', '8.8'],
       'Оптическая сила': [
@@ -259,7 +265,6 @@ List<Product> products = [
     specificationsInfo: ["Alcon - Ciba Vision"],
   ),
 ];
-
 
 class Options {
   String name;

@@ -3,8 +3,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lens_tomsk/presentation/common/constants.dart';
 
 class OptionButton extends StatelessWidget {
-  const OptionButton({Key? key, required this.optionName}) : super(key: key);
+  const OptionButton({Key? key, required this.optionName, required this.style})
+      : super(key: key);
   final String optionName;
+  final TextStyle style;
 
   @override
   Widget build(BuildContext context) {
@@ -15,16 +17,7 @@ class OptionButton extends StatelessWidget {
         color: kGreyColor,
         borderRadius: BorderRadius.circular(10),
       ),
-      child: Center(
-          child: Text(
-        optionName,
-        style: TextStyle(
-          color: kHintTextColor,
-          fontFamily: 'Poppins-Regular',
-          fontSize: 12.sp,
-          fontWeight: FontWeight.w400,
-        ),
-      )),
+      child: Center(child: Text(optionName, style: style)),
     );
   }
 }

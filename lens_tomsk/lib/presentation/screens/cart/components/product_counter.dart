@@ -18,7 +18,7 @@ class ProductCounter extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(top: 56.h, bottom: 18.h),
+      padding: EdgeInsets.only(bottom: 18.h),
       child: Container(
         height: 18.h,
         width: 63.w,

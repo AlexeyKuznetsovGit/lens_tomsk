@@ -47,25 +47,61 @@ class CartProduct extends StatelessWidget {
                 },
                 child: CartProductImage(index: index)),
             Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 CartProductTitle(index: index),
+                if (addedCartProducts[index].selectOptions != null) ...[
+                  Row(
+                    children: [
+                      Text(
+                        "Базовая кривизна:",
+                        style: poppinsRegular12.copyWith(color: kHintTextColor),
+                      ),
+                      SizedBox(
+                        width: 5.w,
+                      ),
+                      Text(
+                        addedCartProducts[index].selectOptions![0],
+                        style: poppinsRegular12.copyWith(color: kBlackColor),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      Text(
+                        "Оптическая сила:",
+                        style: poppinsRegular12.copyWith(color: kHintTextColor),
+                      ),
+                      SizedBox(
+                        width: 5.w,
+                      ),
+                      Text(
+                        addedCartProducts[index].selectOptions![1],
+                        style: poppinsRegular12.copyWith(color: kBlackColor),
+                      ),
+                    ],
+                  )
+                ],
+                Spacer(),
                 Row(
                   children: [
                     ProductCounter(index: index),
                     if (addedCartProducts[index].oldPrice != 0) ...[
                       Padding(
                           padding: EdgeInsets.only(
-                              right: 5.w, bottom: 18.h, left: 50.w, top: 56.h),
+                            right: 5.w,
+                            bottom: 18.h,
+                            left: 50.w,
+                          ),
                           child: PriceProduct(index: index)),
                       Padding(
-                        padding: EdgeInsets.only(
-                            bottom: 18.h, top: 56.h, right: 10.w),
+                        padding: EdgeInsets.only(bottom: 18.h, right: 10.w),
                         child: PriceProductWithDiscount(index: index),
                       ),
                     ] else ...[
                       Padding(
                         padding: EdgeInsets.only(
-                            bottom: 18.h, left: 95.w, top: 56.h,right: 10.w),
+                            bottom: 18.h, left: 95.w, right: 10.w),
                         child: PriceProduct(index: index),
                       ),
                     ],
