@@ -82,7 +82,7 @@ class _PhoneTextFieldState extends State<PhoneTextField> {
                 contentPadding:
                     EdgeInsets.symmetric(horizontal: 10.w, vertical: 9.h), 
                 hintStyle: TextStyle(
-                  color: kHintTextColor,
+                  color: kBlackColor,
                   fontFamily: 'Poppins-Regular',
                   fontSize: 12.sp,
                   fontWeight: FontWeight.w400,

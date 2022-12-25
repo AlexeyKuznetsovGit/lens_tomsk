@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
+
 import 'package:lens_tomsk/presentation/common/constants.dart';
 import 'package:lens_tomsk/presentation/screens/cart/components/body_cart.dart';
 
 class CartScreen extends StatelessWidget {
-  const CartScreen({Key? key}) : super(key: key);
+  CartScreen({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: kBackGroundColor,
-      body: BodyCart(),
-     
+      body: SafeArea(
+        child: BodyCart(),
+      ),
     );
   }
 }

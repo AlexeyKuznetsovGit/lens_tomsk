@@ -34,23 +34,27 @@ class _MainScreenState extends State<MainScreen> {
             height: 68.h,
             decoration: BoxDecoration(
               color: Colors.white,
-              boxShadow: [
-                BoxShadow(
-                  offset: Offset(0, -1),
-                  blurRadius: 8,
-                  color: kBlueColor.withOpacity(0.1),
-                ),
-              ],
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(20.r),
-                topRight: Radius.circular(20.r),
-              ),
+              boxShadow: controller.index.value == 2
+                  ? []
+                  : [
+                      BoxShadow(
+                        offset: Offset(0, -1),
+                        blurRadius: 8,
+                        color: kBlueColor.withOpacity(0.1),
+                      ),
+                    ],
+              borderRadius: controller.index.value == 2
+                  ? null
+                  : BorderRadius.only(
+                      topLeft: Radius.circular(20.r),
+                      topRight: Radius.circular(20.r),
+                    ),
             ),
             child: ClipRRect(
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(20.r),
-                topRight: Radius.circular(20.r),
-              ),
+              borderRadius:BorderRadius.only(
+                      topLeft: Radius.circular(20.r),
+                      topRight: Radius.circular(20.r),
+                    ),
               child: BottomNavigationBar(
                 elevation: 0,
                 backgroundColor: kWhiteColor,

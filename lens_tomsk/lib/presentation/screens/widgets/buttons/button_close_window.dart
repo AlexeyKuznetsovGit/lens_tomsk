@@ -13,11 +13,9 @@ class ButtonCloseWindow extends StatelessWidget {
         behavior: HitTestBehavior.translucent,
         onTap: () => Navigator.of(context).pop(),
         child: Padding(
-          padding: EdgeInsets.only(right: 8.w),
+          padding: EdgeInsets.only(right: 10.w),
           child: SvgPicture.asset(
             "assets/icons/krest.svg",
-            height: 24.h,
-            width: 24.w,
           ),
         ));
   }

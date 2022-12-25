@@ -117,7 +117,7 @@ class _showBuyDialogWidgetState extends State<showBuyDialogWidget> {
                         },
                         content: Container(
                           alignment: Alignment.center,
-                          height: 150.h,
+                          height: indexName == 0 ? 60.h : 150.h,
                           child: SingleChildScrollView(
                             child: Center(
                               child: Column(
@@ -252,40 +252,59 @@ class _showBuyDialogWidgetState extends State<showBuyDialogWidget> {
                       width: 318.w,
                       height: 38.h,
                       decoration: BoxDecoration(
-                        color: widget.product.count == 0 ||
-                                firstParameter.isEmpty ||
-                                secondParameter.isEmpty
+                        color: widget.product.count == 0
                             ? kGreyColor
-                            : kBlueColor,
+                            : productOptions.isEmpty
+                                ? kBlueColor
+                                : firstParameter.isEmpty ||
+                                        secondParameter.isEmpty
+                                    ? kGreyColor
+                                    : kBlueColor,
                         borderRadius: BorderRadius.circular(10),
                       ),
                       child: Center(
                           child: Text(
                         "Добавить товар в корзину",
                         style: TextStyle(
-                            color: widget.product.count == 0 ||
-                                    firstParameter.isEmpty ||
-                                    secondParameter.isEmpty
+                            color: widget.product.count == 0
                                 ? kBlackColor
-                                : kWhiteColor,
+                                : productOptions.isEmpty
+                                    ? kWhiteColor
+                                    : firstParameter.isEmpty ||
+                                            secondParameter.isEmpty
+                                        ? kBlackColor
+                                        : kWhiteColor,
                             fontFamily: 'OpenSans-Regular',
                             fontSize: 12.sp,
                             fontWeight: FontWeight.w600),
                       )),
                     ),
-                    onTap: widget.product.count == 0 ||
-                            firstParameter.isEmpty ||
-                            secondParameter.isEmpty
-                        ? () {
-                            //AddCartSnackBar()
-                          }
-                        : () {
-                            widget.product.selectOptions![0] = firstParameter;
-                            widget.product.selectOptions![1] = secondParameter;
-                            BlocProvider.of<ButtonAddCartCubit>(widget.context)
-                                .addToCart(widget.product);
-                            Get.back();
-                          }),
+                    onTap: widget.product.count == 0
+                        ? () {}
+                        : productOptions.isEmpty
+                            ? () {
+                                widget.product.selectedCount = count;
+
+                                BlocProvider.of<ButtonAddCartCubit>(
+                                        widget.context)
+                                    .addToCart(widget.product);
+
+                                Get.back();
+                              }
+                            : firstParameter.isEmpty || secondParameter.isEmpty
+                                ? () {}
+                                : () {
+                                    widget.product.selectOptions![0] =
+                                        firstParameter;
+                                    widget.product.selectOptions![1] =
+                                        secondParameter;
+                                    widget.product.selectedCount = count;
+
+                                    BlocProvider.of<ButtonAddCartCubit>(
+                                            widget.context)
+                                        .addToCart(widget.product);
+                                    Get.back();
+                                  }),
                 SizedBox(
                   height: 20.h,
                 ),

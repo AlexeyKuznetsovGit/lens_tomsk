@@ -5,8 +5,10 @@ class Product {
   final Map<String, List<String>>? options;
   final bool isRecommended, isDiscounted;
   final List<String>? selectOptions;
+   int? selectedCount;
 
   Product({
+    this.selectedCount,
     this.selectOptions,
     this.options,
     required this.images,

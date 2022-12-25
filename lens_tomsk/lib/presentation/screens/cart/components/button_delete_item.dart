@@ -9,20 +9,27 @@ import 'package:lens_tomsk/presentation/screens/cart/cubit/cart_screen_state.dar
 class ButtonDeleteItem extends StatelessWidget {
   const ButtonDeleteItem({
     Key? key,
+    required this.onTap,
     required this.index,
   }) : super(key: key);
-
+  final VoidCallback onTap;
   final int index;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: (){addedCartProducts.remove(addedCartProducts[index]);
-      BlocProvider.of<CartScreenCubit>(context).emit(
-          addedCartProducts.length > 0
-              ? NotEmptyCartState()
-              : EmptyCartState());},
-      child: SvgPicture.asset("assets/icons/krest.svg"),
+      behavior: HitTestBehavior.translucent,
+      onTap: () {
+        onTap();
+        addedCartProducts.remove(addedCartProducts[index]);
+        BlocProvider.of<CartScreenCubit>(context).emit(
+            addedCartProducts.length > 0
+                ? NotEmptyCartState()
+                : EmptyCartState());
+      },
+      child: SvgPicture.asset(
+        "assets/icons/krest.svg",
+      ),
     );
   }
 }
