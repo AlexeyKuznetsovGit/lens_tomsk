@@ -51,3 +51,11 @@ TextStyle openSansSemiBold12 = TextStyle(
   color: kBlackColor,
   fontWeight: FontWeight.w600,
 );
+
+TextStyle openSansRegular12 = TextStyle(
+  color: kHintTextColor,
+  fontFamily: 'OpenSans-Regular',
+  fontSize: 12.sp,
+  height: 1.172.h,
+  fontWeight: FontWeight.w600,
+);

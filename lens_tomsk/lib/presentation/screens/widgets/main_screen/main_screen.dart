@@ -13,15 +13,15 @@ import 'package:lens_tomsk/presentation/screens/sign_in/sign_in_screen.dart';
 import 'package:lens_tomsk/presentation/screens/widgets/main_screen/controller/main_screen_controller.dart';
 
 class MainScreen extends StatefulWidget {
-  MainScreen({
-    Key? key,
-  }) : super(key: key);
+  MainScreen({Key? key, }) : super(key: key);
+
 
   @override
   State<MainScreen> createState() => _MainScreenState();
 }
 
 class _MainScreenState extends State<MainScreen> {
+
   MainScreenController controller =
       Get.put(MainScreenController(), tag: 'menu');
   bool isAuth = true;
@@ -51,10 +51,10 @@ class _MainScreenState extends State<MainScreen> {
                     ),
             ),
             child: ClipRRect(
-              borderRadius:BorderRadius.only(
-                      topLeft: Radius.circular(20.r),
-                      topRight: Radius.circular(20.r),
-                    ),
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(20.r),
+                topRight: Radius.circular(20.r),
+              ),
               child: BottomNavigationBar(
                 elevation: 0,
                 backgroundColor: kWhiteColor,
@@ -123,12 +123,7 @@ class _MainScreenState extends State<MainScreen> {
             case 3:
               return FavouriteScreenProvider();
             case 4:
-              return isAuth
-                  ? ProfileScreen(
-                      name: users[0].name,
-                      email: users[0].email,
-                      password: users[0].password)
-                  : SignInScreen();
+              return isAuth ? ProfileScreen() : SignInScreen();
             default:
               return Container();
           }

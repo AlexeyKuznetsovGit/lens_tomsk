@@ -58,8 +58,7 @@ class _OrderTextInputState extends State<OrderTextInput> {
             controller: widget._nameField,
             title: 'Имя',
             textInpuType: TextInputType.text,
-            hintText:
-                widget._nameField.text.isEmpty ? 'Имя' : widget._nameField.text,
+        
             isBlackColorHintText: true,
             obscureText: false),
         SizedBox(
@@ -70,9 +69,7 @@ class _OrderTextInputState extends State<OrderTextInput> {
             controller: widget._emailField,
             title: 'E-mail',
             textInpuType: TextInputType.emailAddress,
-            hintText: widget._emailField.text.isEmpty
-                ? 'E-mail'
-                : widget._emailField.text,
+        
             isBlackColorHintText: true,
             obscureText: false),
         SizedBox(
@@ -91,9 +88,7 @@ class _OrderTextInputState extends State<OrderTextInput> {
             controller: widget._cityField,
             title: 'Город',
             textInpuType: TextInputType.text,
-            hintText: widget._cityField.text.isEmpty
-                ? 'Город'
-                : widget._cityField.text,
+           
             isBlackColorHintText: true,
             obscureText: false),
         SizedBox(
@@ -104,9 +99,7 @@ class _OrderTextInputState extends State<OrderTextInput> {
             controller: widget._adresslField,
             title: 'Адрес',
             textInpuType: TextInputType.text,
-            hintText: widget._adresslField.text.isEmpty
-                ? 'Адрес'
-                : widget._adresslField.text,
+         
             isBlackColorHintText: true,
             obscureText: false),
         SizedBox(

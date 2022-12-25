@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:lens_tomsk/presentation/common/local_notice_service.dart';
+import 'package:lens_tomsk/presentation/screens/sign_in/sign_in_screen.dart';
 import 'presentation/screens/widgets/main_screen/main_screen.dart';
 
 void main() async {
@@ -34,7 +35,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         home: child,
       ),
-      child: MainScreen(),
+      child: SignInScreen(),
     );
   }
 }

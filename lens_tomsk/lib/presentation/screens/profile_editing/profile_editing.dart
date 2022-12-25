@@ -5,13 +5,9 @@ import 'package:lens_tomsk/presentation/screens/profile_editing/components/user_
 class ProfileEditing extends StatelessWidget {
   const ProfileEditing(
       {Key? key,
-      required this.name,
-      required this.email,
-      required this.password})
+})
       : super(key: key);
-  final String name;
-  final String email;
-  final String password;
+
 
   @override
   Widget build(BuildContext context) {
@@ -22,9 +18,7 @@ class ProfileEditing extends StatelessWidget {
       child: Scaffold(
         backgroundColor: kBackGroundColor,
         body: UserTextFields(
-          name: name,
-          email: email,
-          password: password,
+        
         ),
       ),
     );

@@ -1,5 +1,5 @@
 class User {
-  final String name, email, password;
+  String name, email, password;
   final int id;
 
   User({
@@ -11,5 +11,5 @@ class User {
 }
 
 List<User> users = [
-  User(id: 0,name: 'Алексей', email: 'pochta@po.com', password: '12345678')
+  User(id: 0, name: 'Алексей', email: 'pochta@po.com', password: '12345678')
 ];

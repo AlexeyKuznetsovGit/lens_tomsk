@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:lens_tomsk/domain/models/Users.dart';
 import 'package:lens_tomsk/presentation/common/constants.dart';
 import 'package:lens_tomsk/presentation/screens/recovery_password_first_step/recovery_password_first_step.dart';
 import 'package:lens_tomsk/presentation/screens/widgets/buttons/button_text.dart';
 import 'package:lens_tomsk/presentation/screens/widgets/input_text_field.dart';
 import 'package:get/get_navigation/src/routes/transitions_type.dart' as tr;
+import 'package:lens_tomsk/presentation/screens/widgets/main_screen/controller/main_screen_controller.dart';
+import 'package:lens_tomsk/presentation/screens/widgets/main_screen/main_screen.dart';
 
 class SignInInputFields extends StatefulWidget {
   const SignInInputFields({
@@ -17,9 +20,18 @@ class SignInInputFields extends StatefulWidget {
 }
 
 class _SignInInputFieldsState extends State<SignInInputFields> {
+  @override
+  void initState() {
+    _emailField.text = users[0].email;
+    _passwordField.text = users[0].password;
+    super.initState();
+  }
+
   final _emailField = TextEditingController();
   final _passwordField = TextEditingController();
   final _formKey = GlobalKey<FormState>();
+  MainScreenController controller =
+      Get.put(MainScreenController(), tag: 'menu');
 
   @override
   Widget build(BuildContext context) {
@@ -49,32 +61,33 @@ class _SignInInputFieldsState extends State<SignInInputFields> {
               ),
             ),
             InputTextField(
-            
               isEmail: true,
               controller: _emailField,
               title: 'Ваш e-mail',
               obscureText: false,
-              hintText: "example@mail.ru",
               textInpuType: TextInputType.emailAddress,
             ),
-            SizedBox(height: 10.h,),
-            InputTextField(
-              isAction: true,
-          
-              isPassword: true,
-              controller: _passwordField,
-              title: 'Ваш пароль',
-               obscureText: true,
-              hintText: "********",
-              textInpuType: TextInputType.text
+            SizedBox(
+              height: 10.h,
             ),
-             SizedBox(height: 20.h,),
+            InputTextField(
+                isAction: true,
+                isPassword: true,
+                controller: _passwordField,
+                title: 'Ваш пароль',
+                obscureText: true,
+                textInpuType: TextInputType.text),
+            SizedBox(
+              height: 20.h,
+            ),
             ButtonText(
                 text: "Войти",
                 buttonColor: kBlueColor,
                 press: () {
                   if (_formKey.currentState!.validate()) {
-                    print('Авторизация успешна');
+                    Get.to(() => MainScreen(),
+                        arguments: controller.index.value = 4,
+                        transition: Transition.cupertino);
                   }
                 },
                 textColor: kWhiteColor,
@@ -88,7 +101,10 @@ class _SignInInputFieldsState extends State<SignInInputFields> {
               alignment: Alignment.center,
               child: GestureDetector(
                 behavior: HitTestBehavior.translucent,
-                onTap: (){Get.to(() => const RecoveryPasswordFirstStep(),  transition: tr.Transition.cupertino);},
+                onTap: () {
+                  Get.to(() => const RecoveryPasswordFirstStep(),
+                      transition: tr.Transition.cupertino);
+                },
                 child: Text(
                   "Забыли пароль?",
                   style: TextStyle(

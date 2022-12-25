@@ -1,50 +1,43 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:lens_tomsk/domain/models/Users.dart';
 import 'package:lens_tomsk/presentation/common/constants.dart';
+import 'package:lens_tomsk/presentation/screens/profile/profile_screen.dart';
 import 'package:lens_tomsk/presentation/screens/widgets/buttons/button_text.dart';
 import 'package:lens_tomsk/presentation/screens/widgets/input_text_field.dart';
 import 'package:lens_tomsk/presentation/screens/widgets/phone_text_field.dart';
 
 class UserTextFields extends StatefulWidget {
-  const UserTextFields(
-      {Key? key,
-      required this.name,
-      required this.email,
-      required this.password})
-      : super(key: key);
-  final String name;
-  final String email;
-  final String password;
+  UserTextFields({
+    Key? key,
+  }) : super(key: key);
 
   @override
   State<UserTextFields> createState() => _UserTextFieldsState();
 }
 
-TextEditingController _nameField = TextEditingController();
-TextEditingController _emailField = TextEditingController();
-TextEditingController _passwordField = TextEditingController();
-TextEditingController _phoneField = TextEditingController();
-
-TextEditingController _cityField = TextEditingController();
-TextEditingController _adresslField = TextEditingController();
-final _formKey = GlobalKey<FormState>();
-
 class _UserTextFieldsState extends State<UserTextFields> {
   @override
   void initState() {
-   /*  if (widget.name != null) {
-      _nameField.text = widget.name;
-    }
-    if (widget.email != null) {
-      _emailField.text = widget.email;
-    }
-    if (widget.password != null) {
-      _passwordField.text = widget.password;
-    } */
+    _nameField.text = users[0].name;
+    _emailField.text = users[0].email;
+    _passwordField.text = users[0].password;
+    _cityField.text = 'Томск';
+    _adresslField.text = 'ул. Ленина, 74';
     super.initState();
   }
 
+  final TextEditingController _nameField = TextEditingController();
+  final TextEditingController _emailField = TextEditingController();
+  final TextEditingController _passwordField = TextEditingController();
+  final TextEditingController _phoneField = TextEditingController();
+
+  final TextEditingController _cityField = TextEditingController();
+  final TextEditingController _adresslField = TextEditingController();
+  final _formKey = GlobalKey<FormState>();
+  String? name;
+  String? email;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -66,22 +59,26 @@ class _UserTextFieldsState extends State<UserTextFields> {
                     height: 20.h,
                   ),
                   InputTextField(
+                      onChanged: (text) {
+                        name = text;
+                      },
                       isName: true,
                       controller: _nameField,
                       title: 'Имя',
                       textInpuType: TextInputType.text,
-                      hintText: widget.name,
                       isBlackColorHintText: true,
                       obscureText: false),
                   SizedBox(
                     height: 10.h,
                   ),
                   InputTextField(
+                      onChanged: (text) {
+                        email = text;
+                      },
                       isEmail: true,
                       controller: _emailField,
                       title: 'E-mail',
                       textInpuType: TextInputType.emailAddress,
-                      hintText: widget.email,
                       isBlackColorHintText: true,
                       obscureText: false),
                   SizedBox(
@@ -93,7 +90,6 @@ class _UserTextFieldsState extends State<UserTextFields> {
                       controller: _passwordField,
                       title: 'Пароль',
                       textInpuType: TextInputType.text,
-                      hintText: widget.password,
                       isBlackColorHintText: true,
                       obscureText: true),
                   SizedBox(
@@ -104,7 +100,6 @@ class _UserTextFieldsState extends State<UserTextFields> {
                       controller: _cityField,
                       title: 'Город',
                       textInpuType: TextInputType.text,
-                      hintText: 'Томск',
                       isBlackColorHintText: true,
                       obscureText: false),
                   SizedBox(
@@ -115,7 +110,6 @@ class _UserTextFieldsState extends State<UserTextFields> {
                       controller: _adresslField,
                       title: 'Адрес',
                       textInpuType: TextInputType.text,
-                      hintText: 'ул. Ленина, 74',
                       isBlackColorHintText: true,
                       obscureText: false),
                   SizedBox(
@@ -123,7 +117,7 @@ class _UserTextFieldsState extends State<UserTextFields> {
                   ),
                   PhoneTextField(
                     title: "Телефон",
-                    hint: '(000) 000-0000',
+                    hint: '(800) 555-3535',
                     controller: _phoneField,
                   ),
                   SizedBox(
@@ -148,7 +142,14 @@ class _UserTextFieldsState extends State<UserTextFields> {
                       ButtonText(
                           text: 'Сохранить',
                           buttonColor: kBlueColor,
-                          press: () {},
+                          press: () {
+                            if (name != null || email != null) {
+                              Get.back(result: {
+                                "name": name,
+                                "email": email,
+                              });
+                            }
+                          },
                           textColor: kWhiteColor,
                           width: 149),
                     ],

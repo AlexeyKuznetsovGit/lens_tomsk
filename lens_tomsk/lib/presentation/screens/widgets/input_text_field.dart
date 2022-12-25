@@ -1,53 +1,49 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:get/get.dart';
-import 'package:lens_tomsk/domain/models/Users.dart';
 import 'package:lens_tomsk/presentation/common/constants.dart';
-import 'package:lens_tomsk/presentation/screens/widgets/buttons/button_add_cart/components/custom_snack_bar.dart';
 
 class InputTextField extends StatefulWidget {
-  InputTextField({
-    Key? key,
-    required this.controller,
-    required this.title,
-    required this.textInpuType,
-    required this.hintText,
-    required this.obscureText,
-    this.isAction = false,
-    this.isBlackColorHintText = false,
-    this.isEmail = false,
-    this.isPassword = false,
-    this.isName = false,
-  }) : super(key: key);
+  InputTextField(
+      {Key? key,
+      required this.controller,
+      required this.title,
+      required this.textInpuType,
+      required this.obscureText,
+      this.isAction = false,
+      this.isBlackColorHintText = false,
+      this.isEmail = false,
+      this.isPassword = false,
+      this.isName = false,
+      this.hintText,
+      this.onChanged})
+      : super(key: key);
   TextEditingController controller;
   final String title;
   final TextInputType textInpuType;
-  final String hintText;
   final bool isEmail;
   final bool isPassword;
   final bool isName;
   bool obscureText;
   final bool isBlackColorHintText;
   final bool isAction;
+  final Function(String)? onChanged;
+  final String? hintText;
 
   @override
   State<InputTextField> createState() => _InputTextFieldState();
 }
 
-late bool isVisible;
-
 class _InputTextFieldState extends State<InputTextField> {
   @override
   void initState() {
     super.initState();
-    isVisible = false;
-    widget.controller = TextEditingController(text: widget.hintText);
+
     widget.controller.selection = TextSelection.fromPosition(
         TextPosition(offset: widget.controller.text.length));
-    print(widget.controller.selection);
   }
 
+  bool isVisible = false;
   @override
   Widget build(BuildContext context) {
     return Column(children: [
@@ -76,6 +72,10 @@ class _InputTextFieldState extends State<InputTextField> {
           keyboardType: widget.textInpuType,
           controller: widget.controller,
           onChanged: (text) => {
+            if (widget.onChanged != null)
+              {
+                widget.onChanged!(text),
+              },
             widget.controller.text = text,
             widget.controller.selection = TextSelection.fromPosition(
                 TextPosition(offset: widget.controller.text.length)),
@@ -98,6 +98,7 @@ class _InputTextFieldState extends State<InputTextField> {
           },
           style: TextStyle(color: kBlackColor),
           decoration: InputDecoration(
+            hintText: widget.hintText,
             suffixIcon: widget.isAction
                 ? GestureDetector(
                     behavior: HitTestBehavior.translucent,
