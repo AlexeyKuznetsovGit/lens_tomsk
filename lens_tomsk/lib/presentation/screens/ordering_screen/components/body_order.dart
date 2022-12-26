@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:lens_tomsk/domain/models/Users.dart';
 import 'package:lens_tomsk/presentation/common/constants.dart';
 import 'package:lens_tomsk/presentation/screens/ordering_screen/components/order_text_input.dart';
+import 'package:lens_tomsk/presentation/screens/ordering_screen/components/web_screen.dart';
 import 'package:lens_tomsk/presentation/screens/widgets/buttons/button_back.dart';
 import 'package:lens_tomsk/presentation/screens/widgets/buttons/button_text.dart';
-import 'package:lens_tomsk/presentation/screens/widgets/input_text_field.dart';
-import 'package:lens_tomsk/presentation/screens/widgets/phone_text_field.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 
 class BodyOrder extends StatefulWidget {
   BodyOrder({Key? key, required this.totalPrice}) : super(key: key);
   final int totalPrice;
+
   @override
   State<BodyOrder> createState() => _BodyOrderState();
 }
@@ -105,32 +107,34 @@ class _BodyOrderState extends State<BodyOrder> {
                       SizedBox(
                         height: 20.h,
                       ),
-                      Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            SizedBox(
-                              width: 10.w,
-                            ),
-                            Text(
-                              'Итого:',
-                              style: openSansSemiBold12,
-                            ),
-                            Spacer(),
-                            Text(
-                              '${widget.totalPrice} ₽',
-                              style: poppinsSemiBold12,
-                            ),
-                            SizedBox(
-                              width: 10.w,
-                            ),
-                          ]),
+                      Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                        SizedBox(
+                          width: 10.w,
+                        ),
+                        Text(
+                          'Итого:',
+                          style: openSansSemiBold12,
+                        ),
+                        Spacer(),
+                        Text(
+                          '${widget.totalPrice} ₽',
+                          style: poppinsSemiBold12,
+                        ),
+                        SizedBox(
+                          width: 10.w,
+                        ),
+                      ]),
                       SizedBox(
                         height: 12.h,
                       ),
                       ButtonText(
                           text: "Оформить заказ",
                           buttonColor: kBlueColor,
-                          press: () {},
+                          press: () {
+                            Get.to(() => WebScreen(), transition: Transition.cupertino);
+                            /*controller.loadRequest(Uri.parse(
+                                'https://yoomoney.ru/checkout/payments/v2/contract?orderId=2b3b9732-000f-5000-a000-12c4485ca411'));*/
+                          },
                           textColor: kWhiteColor,
                           width: 318)
                     ],

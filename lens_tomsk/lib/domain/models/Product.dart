@@ -73,7 +73,7 @@ List<Product> products = [
         "AOSEPT® plus HydraGlyde® обеспечивает эффективную очистку и надежную дезинфекцию контактных линз. За счет матрицы HydraGlyde®, которая способствует длительному увлажнению, в линзах комфортно в течении всего дня. Не содержит консервантов! Подходит для чувствительных глаз!",
     title: "ACUVUE OASYS (24 шт.)",
     category: "lens",
-    price: 5070,
+    price: 5040,
     oldPrice: 6000,
     isRecommended: false,
     isDiscounted: true,

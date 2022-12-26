@@ -45,6 +45,7 @@ dependencies:
   easy_mask: ^2.0.1
   flutter_local_notifications: ^12.0.3
   expansion_widget: ^0.0.3
+  webview_flutter: ^4.0.1
 
 
 flutter_native_splash:
