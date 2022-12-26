@@ -1,12 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
+import 'package:lens_tomsk/domain/models/Users.dart';
 import 'package:lens_tomsk/presentation/common/constants.dart';
+import 'package:lens_tomsk/presentation/screens/history_orders_screen/history_orders_screen.dart';
+import 'package:lens_tomsk/presentation/screens/profile_editing/profile_editing.dart';
 import 'package:lens_tomsk/presentation/screens/widgets/section_description.dart';
 import 'package:lens_tomsk/presentation/screens/widgets/section_title.dart';
+import 'package:get/get_navigation/src/routes/transitions_type.dart' as tr;
 
-class Body extends StatelessWidget {
+class Body extends StatefulWidget {
   const Body({Key? key}) : super(key: key);
+
+  @override
+  State<Body> createState() => _BodyState();
+}
+
+class _BodyState extends State<Body> {
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -32,22 +47,37 @@ class Body extends StatelessWidget {
                 children: [
                   Padding(
                     padding: EdgeInsets.only(left: 20.w, top: 20.h),
-                    child: SectionTitle(text: "Иван"),
+                    child: SectionTitle(text: users[0].name),
                   ),
                   Padding(
                     padding: EdgeInsets.only(left: 20.w, top: 49.h),
-                    child: SectionDescription(text: "example@mail.ru"),
+                    child: SectionDescription(text: users[0].email),
                   ),
                   Padding(
                     padding: EdgeInsets.only(left: 281.w, top: 25.h),
                     child: GestureDetector(
-                      onTap: () => {},
+                      onTap: () async {
+                        Map<String, dynamic>? res = await Get.to(
+                            () => ProfileEditing(),
+                            transition: tr.Transition.cupertino);
+                        if (res != null) {
+                          setState(() {
+                            if (res['name'] != null) {
+                              users[0].name = res['name'];
+                            }
+                            if (res['email'] != null) {
+                              users[0].email = res['email'];
+                            }
+                          });
+                        }
+                      },
                       child: Container(
                           alignment: Alignment.center,
                           width: 37.w,
                           height: 37.h,
+                          //padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 10.w),
                           decoration: BoxDecoration(
-                            color: kWhiteColor,
+                            color: kBackGroundColor,
                             borderRadius: BorderRadius.circular(10),
                           ),
                           child: SvgPicture.asset(
@@ -82,7 +112,10 @@ class Body extends StatelessWidget {
                     height: 20.h,
                   ),
                   GestureDetector(
-                    onTap: () => {},
+                    onTap: () => {
+                      Get.to(() => HistoryOrderScreen(),
+                          transition: Transition.cupertino)
+                    },
                     child: Container(
                       alignment: Alignment.center,
                       height: 38.h,

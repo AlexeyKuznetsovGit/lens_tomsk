@@ -1,17 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
+import 'package:lens_tomsk/data/repository/searchList.dart';
+import 'package:lens_tomsk/domain/models/Product.dart';
 import 'package:lens_tomsk/presentation/common/constants.dart';
+import 'package:lens_tomsk/presentation/screens/search_screen/search_screen.dart';
 
-class Header extends StatelessWidget {
-  const Header({Key? key, required this.width, required this.text}) : super(key: key);
+class Header extends StatelessWidget implements PreferredSizeWidget {
+  const Header({Key? key, required this.width, required this.text})
+      : super(key: key);
   final String text;
   final int width;
 
   @override
+  Size get preferredSize => Size.fromHeight(35.h);
+
+  @override
   Widget build(BuildContext context) {
-    return Form(
-        child: Container(
+    return Container(
       width: width.w,
       height: 35.h,
       decoration: BoxDecoration(
@@ -25,6 +32,16 @@ class Header extends StatelessWidget {
         ],
       ),
       child: TextFormField(
+        onFieldSubmitted: (text) {
+          Get.to(() => SearchScreen(), transition: Transition.cupertino);
+          searchList = [];
+          for (int index = 0; index < products.length; index++) {
+            List<String> cutTitle = products[index].title.split(' ');
+            if (cutTitle[0].toLowerCase() == text.toLowerCase()) {
+              searchList.add(products[index]);
+            }
+          }
+        },
         decoration: InputDecoration(
           contentPadding:
               EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
@@ -44,6 +61,6 @@ class Header extends StatelessWidget {
           ),
         ),
       ),
-    ));
+    );
   }
 }

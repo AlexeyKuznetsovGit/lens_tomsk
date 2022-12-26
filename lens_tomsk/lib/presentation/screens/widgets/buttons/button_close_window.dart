@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class ButtonCloseWindow extends StatelessWidget {
@@ -9,8 +10,13 @@ class ButtonCloseWindow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-              onTap: () => Navigator.of(context).pop(),
-              child:  SvgPicture.asset("assets/icons/krest.svg")
-            );
+        behavior: HitTestBehavior.translucent,
+        onTap: () => Navigator.of(context).pop(),
+        child: Padding(
+          padding: EdgeInsets.only(right: 10.w),
+          child: SvgPicture.asset(
+            "assets/icons/krest.svg",
+          ),
+        ));
   }
 }

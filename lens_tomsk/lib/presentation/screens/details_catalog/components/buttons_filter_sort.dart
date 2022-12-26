@@ -29,7 +29,7 @@ class ButtonsFilterSort extends StatelessWidget {
          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             ButtonText(buttonColor: kGreyColor,textColor: kBlackColor,width: 149,text: "Фильтры", press: (){
-              showFiltersDialog(context);
+              showFilter();
             }),
             SizedBox(width: 20.w),
             ButtonText(buttonColor: kGreyColor,textColor: kBlackColor,width: 149,text: "По умолчанию", press: (){

@@ -1,11 +1,20 @@
 class Product {
   final String title, description, category;
   final List<String> images, specificationsName, specificationsInfo;
-  final int price, oldPrice;
-  bool isRecommended, isDiscounted;
+  final int price, oldPrice, count;
+  final Map<String, List<String>>? options;
+  final bool isRecommended, isDiscounted;
+  final List<String>? selectOptions;
+  final String subCategory;
+  int? selectedCount;
 
   Product({
+    this.selectedCount,
+    this.selectOptions,
+    this.options,
+    required this.subCategory,
     required this.images,
+    required this.count,
     required this.description,
     required this.title,
     required this.category,
@@ -20,6 +29,45 @@ class Product {
 
 List<Product> products = [
   Product(
+    selectOptions: ['', ''],
+    options: {
+      "Базовая кривизна": ['8.4', '8.8'],
+      'Оптическая сила': [
+        '+8',
+        '+7.5',
+        '+7',
+        '+6.5',
+        '+6',
+        '+5.5',
+        '+5',
+        '+4.5',
+        '+4',
+        '+3.5',
+        '+3',
+        '+2.5',
+        '+2',
+        '+1.5',
+        '+1',
+        '+0.5',
+        '-0.5',
+        '-1',
+        '-1.5',
+        '-2',
+        '-2.5',
+        '-3',
+        '-3.5',
+        '-4',
+        '-4.5',
+        '-5',
+        '-5.5',
+        '-6',
+        '-6.5',
+        '-7',
+        '-7.5',
+        '-8'
+      ],
+    },
+    count: 4,
     images: ["assets/images/product_1.png", "assets/images/product_1-1.png"],
     description:
         "AOSEPT® plus HydraGlyde® обеспечивает эффективную очистку и надежную дезинфекцию контактных линз. За счет матрицы HydraGlyde®, которая способствует длительному увлажнению, в линзах комфортно в течении всего дня. Не содержит консервантов! Подходит для чувствительных глаз!",
@@ -34,9 +82,12 @@ List<Product> products = [
       "Доступность",
       "Кислородопроницаемость"
     ],
+    subCategory: "Двухнедельные линзы",
     specificationsInfo: ["Johnson&Johnson", "На складе", "147"],
   ),
   Product(
+    subCategory: '',
+    count: 10,
     images: ["assets/images/product_2.png"],
     description:
         "AOSEPT® plus HydraGlyde® обеспечивает эффективную очистку и надежную дезинфекцию контактных линз. За счет матрицы HydraGlyde®, которая способствует длительному увлажнению, в линзах комфортно в течении всего дня. Не содержит консервантов! Подходит для чувствительных глаз!",
@@ -50,32 +101,149 @@ List<Product> products = [
     specificationsInfo: ["Alcon - Ciba Vision"],
   ),
   Product(
-    images: ["assets/images/product_3.png"],
-    description:
-        "AOSEPT® plus HydraGlyde® обеспечивает эффективную очистку и надежную дезинфекцию контактных линз. За счет матрицы HydraGlyde®, которая способствует длительному увлажнению, в линзах комфортно в течении всего дня. Не содержит консервантов! Подходит для чувствительных глаз!",
-    title: "Acuvue 1-day TruEye, (90 шт.)",
-    category: "lens",
-    price: 5170,
-    oldPrice: 5890,
-    isRecommended: true,
-    isDiscounted: true,
-    specificationsName: ["Производитель"],
-    specificationsInfo: ["Alcon - Ciba Vision"],
-  ),
+      selectOptions: ['', ''],
+      options: {
+        "Базовая кривизна": ['8.4', '8.8'],
+        'Оптическая сила': [
+          '+8',
+          '+7.5',
+          '+7',
+          '+6.5',
+          '+6',
+          '+5.5',
+          '+5',
+          '+4.5',
+          '+4',
+          '+3.5',
+          '+3',
+          '+2.5',
+          '+2',
+          '+1.5',
+          '+1',
+          '+0.5',
+          '-0.5',
+          '-1',
+          '-1.5',
+          '-2',
+          '-2.5',
+          '-3',
+          '-3.5',
+          '-4',
+          '-4.5',
+          '-5',
+          '-5.5',
+          '-6',
+          '-6.5',
+          '-7',
+          '-7.5',
+          '-8'
+        ],
+      },
+      count: 1,
+      images: ["assets/images/product_3.png"],
+      description:
+          "AOSEPT® plus HydraGlyde® обеспечивает эффективную очистку и надежную дезинфекцию контактных линз. За счет матрицы HydraGlyde®, которая способствует длительному увлажнению, в линзах комфортно в течении всего дня. Не содержит консервантов! Подходит для чувствительных глаз!",
+      title: "Acuvue 1-day TruEye, (90 шт.)",
+      category: "lens",
+      price: 5170,
+      oldPrice: 5890,
+      isRecommended: true,
+      isDiscounted: true,
+      specificationsName: ["Производитель"],
+      specificationsInfo: ["Alcon - Ciba Vision"],
+      subCategory: 'Однодневные линзы'),
   Product(
-    images: ["assets/images/product_4.png"],
-    description:
-        "AOSEPT® plus HydraGlyde® обеспечивает эффективную очистку и надежную дезинфекцию контактных линз. За счет матрицы HydraGlyde®, которая способствует длительному увлажнению, в линзах комфортно в течении всего дня. Не содержит консервантов! Подходит для чувствительных глаз!",
-    title: "Air Optix Aqua (3 шт.)",
-    category: "lens",
-    price: 980,
-    oldPrice: 0,
-    isRecommended: true,
-    isDiscounted: false,
-    specificationsName: ["Производитель"],
-    specificationsInfo: ["Alcon - Ciba Vision"],
-  ),
+      selectOptions: ['', ''],
+      options: {
+        "Базовая кривизна": ['8.4', '8.8'],
+        'Оптическая сила': [
+          '+8',
+          '+7.5',
+          '+7',
+          '+6.5',
+          '+6',
+          '+5.5',
+          '+5',
+          '+4.5',
+          '+4',
+          '+3.5',
+          '+3',
+          '+2.5',
+          '+2',
+          '+1.5',
+          '+1',
+          '+0.5',
+          '-0.5',
+          '-1',
+          '-1.5',
+          '-2',
+          '-2.5',
+          '-3',
+          '-3.5',
+          '-4',
+          '-4.5',
+          '-5',
+          '-5.5',
+          '-6',
+          '-6.5',
+          '-7',
+          '-7.5',
+          '-8'
+        ],
+      },
+      count: 0,
+      images: ["assets/images/product_4.png"],
+      description:
+          "AOSEPT® plus HydraGlyde® обеспечивает эффективную очистку и надежную дезинфекцию контактных линз. За счет матрицы HydraGlyde®, которая способствует длительному увлажнению, в линзах комфортно в течении всего дня. Не содержит консервантов! Подходит для чувствительных глаз!",
+      title: "Air Optix Aqua (3 шт.)",
+      category: "lens",
+      price: 980,
+      oldPrice: 0,
+      isRecommended: true,
+      isDiscounted: false,
+      specificationsName: ["Производитель"],
+      specificationsInfo: ["Alcon - Ciba Vision"],
+      subCategory: 'Линзы на месяц'),
   Product(
+    selectOptions: ['', ''],
+    options: {
+      "Базовая кривизна": ['8.4', '8.8'],
+      'Оптическая сила': [
+        '+8',
+        '+7.5',
+        '+7',
+        '+6.5',
+        '+6',
+        '+5.5',
+        '+5',
+        '+4.5',
+        '+4',
+        '+3.5',
+        '+3',
+        '+2.5',
+        '+2',
+        '+1.5',
+        '+1',
+        '+0.5',
+        '-0.5',
+        '-1',
+        '-1.5',
+        '-2',
+        '-2.5',
+        '-3',
+        '-3.5',
+        '-4',
+        '-4.5',
+        '-5',
+        '-5.5',
+        '-6',
+        '-6.5',
+        '-7',
+        '-7.5',
+        '-8'
+      ],
+    },
+    count: 11,
     images: ["assets/images/product_5.png"],
     description:
         "AOSEPT® plus HydraGlyde® обеспечивает эффективную очистку и надежную дезинфекцию контактных линз. За счет матрицы HydraGlyde®, которая способствует длительному увлажнению, в линзах комфортно в течении всего дня. Не содержит консервантов! Подходит для чувствительных глаз!",
@@ -87,8 +255,11 @@ List<Product> products = [
     isDiscounted: false,
     specificationsName: ["Производитель"],
     specificationsInfo: ["Alcon - Ciba Vision"],
+    subCategory: 'Двухнедельные линзы',
   ),
   Product(
+    subCategory: '',
+    count: 3,
     images: ["assets/images/product_6.png"],
     description:
         "AOSEPT® plus HydraGlyde® обеспечивает эффективную очистку и надежную дезинфекцию контактных линз. За счет матрицы HydraGlyde®, которая способствует длительному увлажнению, в линзах комфортно в течении всего дня. Не содержит консервантов! Подходит для чувствительных глаз!",
@@ -102,3 +273,15 @@ List<Product> products = [
     specificationsInfo: ["Alcon - Ciba Vision"],
   ),
 ];
+
+class Options {
+  String name;
+  List<String> parameters;
+
+  Options(this.name, this.parameters);
+
+  @override
+  String toString() {
+    return '{ ${this.name}, ${this.parameters} }';
+  }
+}

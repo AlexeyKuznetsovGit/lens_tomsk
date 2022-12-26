@@ -9,7 +9,7 @@ class ButtonText extends StatelessWidget {
   final double width;
   final Color textColor;
   final Color buttonColor;
-  final GestureTapCallback press;
+  final Function()? press;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(

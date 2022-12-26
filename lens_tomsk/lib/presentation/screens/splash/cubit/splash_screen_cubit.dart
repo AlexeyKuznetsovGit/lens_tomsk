@@ -27,11 +27,11 @@ class SplashScreenCubit extends Cubit<SplashScreenState> {
   } */
    Future<void> getProducts() async {
     try {
-      Timer(Duration(seconds: 5), () {
-        emit(SplashScreenLoadedState(products: products));
-      });
-    } on Exception catch (error) {
-      emit(SplashScreenErrorState(errorMsg: 'Sorry, unknown error'));
+      Map<String, dynamic> response =
+          await Api.get(method: 'products/', testMode: true);
+          emit(SplashScreenLoadedState());
+    } on APIException catch (error) {
+      emit(SplashScreenErrorState(errorMsg: "${error.code}"));
     }
   } 
 }
