@@ -8,7 +8,9 @@ import 'package:lens_tomsk/presentation/screens/widgets/buttons/button_text.dart
 class ButtonsFilterSort extends StatelessWidget {
   const ButtonsFilterSort({
     Key? key,
+    required this.categoryName
   }) : super(key: key);
+  final String categoryName;
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +31,7 @@ class ButtonsFilterSort extends StatelessWidget {
          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             ButtonText(buttonColor: kGreyColor,textColor: kBlackColor,width: 149,text: "Фильтры", press: (){
-              showFilter();
+              showFilter(categoryName);
             }),
             SizedBox(width: 20.w),
             ButtonText(buttonColor: kGreyColor,textColor: kBlackColor,width: 149,text: "По умолчанию", press: (){

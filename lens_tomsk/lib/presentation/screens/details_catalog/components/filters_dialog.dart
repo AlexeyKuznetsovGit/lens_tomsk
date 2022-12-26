@@ -8,28 +8,33 @@ import 'package:lens_tomsk/presentation/screens/widgets/buttons/button_add_cart/
 import 'package:lens_tomsk/presentation/screens/widgets/buttons/button_close_window.dart';
 import 'package:lens_tomsk/presentation/screens/widgets/buttons/button_text.dart';
 
-void showFilter() {
-  Get.dialog(FilterWidget(), barrierDismissible: true);
+import '../../../../data/repository/Category_products.dart';
+import '../../../../domain/models/Product.dart';
+
+void showFilter(String categoryName) {
+  Get.dialog(
+      FilterWidget(
+        categoryName: categoryName,
+      ),
+      barrierDismissible: true);
 }
 
 class FilterWidget extends StatefulWidget {
-  FilterWidget({Key? key}) : super(key: key);
+  FilterWidget({Key? key, required this.categoryName}) : super(key: key);
+  final String categoryName;
 
   @override
   State<FilterWidget> createState() => _FilterWidgetState();
 }
 
 class _FilterWidgetState extends State<FilterWidget> {
-  List<String> firstList = [
-    'Однодневные линзы',
-    'Двухнедельные линзы',
-    'Линзы на месяц'
-  ];
+  List<String> firstList = ['Однодневные линзы', 'Двухнедельные линзы', 'Линзы на месяц'];
   List<String> secondList = ['Alcon - Ciba Vision', 'Johnson&Johnson'];
   String firstParameter = '';
   String secondParameter = '';
   bool isOpen = false;
   int len = 0;
+
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -42,8 +47,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           color: Colors.black.withOpacity(0.4),
           child: Container(
             width: 338.w,
-            decoration: BoxDecoration(
-                color: Colors.white, borderRadius: BorderRadius.circular(10.r)),
+            decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(10.r)),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -88,12 +92,10 @@ class _FilterWidgetState extends State<FilterWidget> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Padding(
-                        padding:
-                            EdgeInsets.only(left: 10.w, bottom: 4.h, top: 20.h),
+                        padding: EdgeInsets.only(left: 10.w, bottom: 4.h, top: 20.h),
                         child: Text(
                           indexName == 0 ? 'Категория' : "Производитель",
-                          style:
-                              openSansRegular12.copyWith(color: kHintTextColor),
+                          style: openSansRegular12.copyWith(color: kHintTextColor),
                         ),
                       ),
                       ExpansionWidget(
@@ -104,8 +106,7 @@ class _FilterWidgetState extends State<FilterWidget> {
                               isOpen = byl;
                             });
                           },
-                          titleBuilder: (double animationValue, _,
-                              bool isExpaned, toogleFunction) {
+                          titleBuilder: (double animationValue, _, bool isExpaned, toogleFunction) {
                             return GestureDetector(
                               onTap: () {
                                 toogleFunction(animated: true);
@@ -148,34 +149,24 @@ class _FilterWidgetState extends State<FilterWidget> {
                                         onTap: () {
                                           setState(() {
                                             if (indexName == 0) {
-                                              firstParameter =
-                                                  firstList[indexParameters];
+                                              firstParameter = firstList[indexParameters];
                                             } else {
-                                              secondParameter =
-                                                  secondList[indexParameters];
+                                              secondParameter = secondList[indexParameters];
                                             }
                                           });
                                         },
                                         behavior: HitTestBehavior.translucent,
                                         child: Container(
                                           height: 18.h,
-                                          margin: EdgeInsets.only(
-                                              bottom: indexParameters == len - 1
-                                                  ? 0
-                                                  : 10.h),
+                                          margin: EdgeInsets.only(bottom: indexParameters == len - 1 ? 0 : 10.h),
                                           child: Text(
-                                            indexName == 0
-                                                ? firstList[indexParameters]
-                                                : secondList[indexParameters],
+                                            indexName == 0 ? firstList[indexParameters] : secondList[indexParameters],
                                             style: poppinsRegular12.copyWith(
                                                 color: indexName == 0
-                                                    ? firstList[indexParameters] ==
-                                                            firstParameter
+                                                    ? firstList[indexParameters] == firstParameter
                                                         ? kBlueColor
                                                         : kHintTextColor
-                                                    : secondList[
-                                                                indexParameters] ==
-                                                            secondParameter
+                                                    : secondList[indexParameters] == secondParameter
                                                         ? kBlueColor
                                                         : kHintTextColor),
                                           ),
@@ -199,14 +190,32 @@ class _FilterWidgetState extends State<FilterWidget> {
                       textColor: kBlackColor,
                       width: 149,
                       text: "Сбросить",
-                      press: () {}),
+                      press: () {
+                        setState(() {
+                          categoryProducts = [];
+                          for (int index = 0; index < products.length; index++) {
+                            if (products[index].category == widget.categoryName) {
+                              categoryProducts.add(products[index]);
+                            }
+                          }
+                        });
+                      }),
                   SizedBox(width: 20.w),
                   ButtonText(
                       buttonColor: kBlueColor,
                       textColor: kWhiteColor,
                       width: 149,
                       text: "Показать товары",
-                      press: () {})
+                      press: () {
+                        setState(() {
+                          categoryProducts = [];
+                          for (int index = 0; index < products.length; index++) {
+                            if (products[index].category == widget.categoryName) {
+                              categoryProducts.add(products[index]);
+                            }
+                          }
+                        });
+                      })
                 ]),
                 SizedBox(
                   height: 20.h,

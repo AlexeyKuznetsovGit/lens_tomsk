@@ -38,7 +38,7 @@ class BodyDetailsCatalog extends StatelessWidget {
           ),
           Padding(
             padding: EdgeInsets.only(left: 11.w, right: 11.w, top: 10.h),
-            child: ButtonsFilterSort(),
+            child: ButtonsFilterSort(categoryName: categoryName,),
           ),
           Padding(
             padding: EdgeInsets.only(top: 20.h),
